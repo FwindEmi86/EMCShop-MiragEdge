@@ -1,0 +1,289 @@
+# 请确保以下数值能合理匹配你的服务器经济体系
+# 默认燃烧率为 0，建议设置在 0 - 99 之间
+# 燃烧率 = 每次凝结时损失的 EMC 百分比（例如：BURN_RATE: 20 表示损失 20%）
+disable_EMC2_WARNING: false  # 禁用 EMC2 警告提示
+EMC_VALUES:
+  BURN_RATE: 0  # 燃烧率
+  BASE:  # 基础物品 EMC 值
+    GRASS_BLOCK: 1  # 草方块
+    DIRT: 1  # 泥土
+    PODZOL: 1  # 灰化土
+    CRIMSON_NYLIUM: 1  # 绯红菌岩
+    WARPED_NYLIUM: 1  # 诡异菌岩
+    COBBLESTONE: 1  # 圆石
+    DIORITE: 1  # 闪长岩
+    ANDESITE: 1  # 安山岩
+    GRANITE: 1  # 花岗岩
+    OAK_SAPLING: 2  # 橡树树苗
+    SPRUCE_SAPLING: 2  # 云杉树苗
+    BIRCH_SAPLING: 2  # 白桦树苗
+    JUNGLE_SAPLING: 2  # 丛林树苗
+    ACACIA_SAPLING: 2  # 金合欢树苗
+    DARK_OAK_SAPLING: 2  # 深色橡树树苗
+    SAND: 1  # 沙子
+    RED_SAND: 1  # 红沙
+    GRAVEL: 1  # 砂砾
+    GOLD_ORE: 0  # 金矿
+    IRON_ORE: 0  # 铁矿
+    COAL_ORE: 0  # 煤矿
+    NETHER_GOLD_ORE: 0  # 下界金矿
+    OAK_LOG: 4  # 橡树原木
+    SPRUCE_LOG: 4  # 云杉原木
+    BIRCH_LOG: 4  # 白桦原木
+    JUNGLE_LOG: 4  # 丛林原木
+    ACACIA_LOG: 4  # 金合欢原木
+    DARK_OAK_LOG: 4  # 深色橡树原木
+    CRIMSON_STEM: 4  # 绯红菌柄
+    WARPED_STEM: 4  # 诡异菌柄
+    STRIPPED_OAK_LOG: 4  # 去皮橡树原木
+    STRIPPED_SPRUCE_LOG: 4  # 去皮云杉原木
+    STRIPPED_BIRCH_LOG: 4  # 去皮白桦原木
+    STRIPPED_JUNGLE_LOG: 4  # 去皮丛林原木
+    STRIPPED_ACACIA_LOG: 4  # 去皮金合欢原木
+    STRIPPED_DARK_OAK_LOG: 4  # 去皮深色橡树原木
+    STRIPPED_CRIMSON_STEM: 4  # 去皮绯红菌柄
+    STRIPPED_WARPED_STEM: 4  # 去皮诡异菌柄
+    STRIPPED_OAK_WOOD: 4  # 去皮橡树木
+    STRIPPED_SPRUCE_WOOD: 4  # 去皮云杉木
+    STRIPPED_BIRCH_WOOD: 4  # 去皮白桦木
+    STRIPPED_JUNGLE_WOOD: 4  # 去皮丛林木
+    STRIPPED_ACACIA_WOOD: 4  # 去皮金合欢木
+    STRIPPED_DARK_OAK_WOOD: 4  # 去皮深色橡树
+    STRIPPED_CRIMSON_HYPHAE: 4  # 去皮绯红菌索
+    STRIPPED_WARPED_HYPHAE: 4  # 去皮诡异菌索
+    OAK_WOOD: 4  # 橡树木
+    SPRUCE_WOOD: 4  # 云杉木
+    BIRCH_WOOD: 4  # 白桦木
+    JUNGLE_WOOD: 4  # 丛林木
+    ACACIA_WOOD: 4  # 金合欢木
+    DARK_OAK_WOOD: 4  # 深色橡树木
+    CRIMSON_HYPHAE: 4  # 绯红菌索
+    WARPED_HYPHAE: 4  # 诡异菌索
+    OAK_LEAVES: 1  # 橡树叶子
+    SPRUCE_LEAVES: 1  # 云杉叶子
+    BIRCH_LEAVES: 1  # 白桦叶子
+    JUNGLE_LEAVES: 1  # 丛林叶子
+    ACACIA_LEAVES: 1  # 金合欢叶子
+    DARK_OAK_LEAVES: 1  # 深色橡树叶子
+    WET_SPONGE: 16  # 湿海绵
+    LAPIS_ORE: 0  # 青金石矿
+    COBWEB: 4  # 蜘蛛网
+    GRASS: 1  # 草
+    FERN: 1  # 蕨
+    DEAD_BUSH: 1  # 枯灌木
+    SEAGRASS: 1  # 海草
+    SEA_PICKLE: 4  # 海泡菜
+    DANDELION: 2  # 蒲公英
+    POPPY: 2  # 虞美人
+    BLUE_ORCHID: 2  # 蓝色兰花
+    ALLIUM: 2  # 绒球葱
+    AZURE_BLUET: 2  #  Azure 蓝铃花
+    RED_TULIP: 2  # 红色郁金香
+    ORANGE_TULIP: 2  # 橙色郁金香
+    WHITE_TULIP: 2  # 白色郁金香
+    PINK_TULIP: 2  # 粉色郁金香
+    OXEYE_DAISY: 2  # 滨菊
+    CORNFLOWER: 2  # 矢车菊
+    LILY_OF_THE_VALLEY: 2  # 铃兰
+    WITHER_ROSE: 32  # 凋零玫瑰
+    BROWN_MUSHROOM: 4  # 棕色蘑菇
+    RED_MUSHROOM: 4  # 红色蘑菇
+    CRIMSON_FUNGUS: 4  # 绯红真菌
+    WARPED_FUNGUS: 4  # 诡异真菌
+    CRIMSON_ROOTS: 2  # 绯红菌根
+    WARPED_ROOTS: 2  # 诡异菌根
+    WEEPING_VINES: 2  # 垂泪藤
+    TWISTING_VINES: 2  # 缠怨藤
+    SUGAR_CANE: 2  # 甘蔗
+    KELP: 1  # 海带
+    BAMBOO: 1  # 竹子
+    OBSIDIAN: 16  # 黑曜石
+    CHORUS_PLANT: 2  # 紫颂植物
+    CHORUS_FLOWER: 8  # 紫颂花
+    DIAMOND_ORE: 0  # 钻石矿
+    REDSTONE_ORE: 0  # 红石矿
+    ICE: 1  # 冰
+    CACTUS: 1  # 仙人掌
+    PUMPKIN: 4  # 南瓜
+    CARVED_PUMPKIN: 4  # 雕刻南瓜
+    NETHERRACK: 1  # 下界岩
+    SOUL_SAND: 2  # 灵魂沙
+    SOUL_SOIL: 2  # 灵魂土
+    BASALT: 1  # 玄武岩
+    BROWN_MUSHROOM_BLOCK: 4  # 棕色蘑菇块
+    RED_MUSHROOM_BLOCK: 4  # 红色蘑菇块
+    MUSHROOM_STEM: 4  # 蘑菇柄
+    VINE: 2  # 藤蔓
+    MYCELIUM: 8  # 菌丝
+    LILY_PAD: 8  # 睡莲
+    END_STONE: 2  # 末地石
+    DRAGON_EGG: 16384  # 龙蛋
+    EMERALD_ORE: 0  # 绿宝石矿
+    NETHER_QUARTZ_ORE: 0  # 下界石英矿
+    SUNFLOWER: 2  # 向日葵
+    LILAC: 2  # 丁香
+    ROSE_BUSH: 2  # 玫瑰丛
+    PEONY: 2  # 牡丹
+    TALL_GRASS: 1  # 高草
+    LARGE_FERN: 1  # 大蕨
+    TURTLE_EGG: 64  # 海龟蛋
+    DEAD_TUBE_CORAL_BLOCK: 8  # 枯死的管珊瑚块
+    DEAD_BRAIN_CORAL_BLOCK: 8  # 枯死的脑珊瑚块
+    DEAD_BUBBLE_CORAL_BLOCK: 8  # 枯死的气泡珊瑚块
+    DEAD_FIRE_CORAL_BLOCK: 8  # 枯死的火珊瑚块
+    DEAD_HORN_CORAL_BLOCK: 8  # 枯死的角珊瑚块
+    TUBE_CORAL_BLOCK: 8  # 管珊瑚块
+    BRAIN_CORAL_BLOCK: 8  # 脑珊瑚块
+    BUBBLE_CORAL_BLOCK: 8  # 气泡珊瑚块
+    FIRE_CORAL_BLOCK: 8  # 火珊瑚块
+    HORN_CORAL_BLOCK: 8  # 角珊瑚块
+    TUBE_CORAL: 8  # 管珊瑚
+    BRAIN_CORAL: 8  # 脑珊瑚
+    BUBBLE_CORAL: 8  # 气泡珊瑚
+    FIRE_CORAL: 8  # 火珊瑚
+    HORN_CORAL: 8  # 角珊瑚
+    DEAD_TUBE_CORAL: 8  # 枯死的管珊瑚
+    DEAD_BRAIN_CORAL: 8  # 枯死的脑珊瑚
+    DEAD_BUBBLE_CORAL: 8  # 枯死的气泡珊瑚
+    DEAD_FIRE_CORAL: 8  # 枯死的火珊瑚
+    DEAD_HORN_CORAL: 8  # 枯死的角珊瑚
+    TUBE_CORAL_FAN: 8  # 管珊瑚扇
+    BRAIN_CORAL_FAN: 8  # 脑珊瑚扇
+    BUBBLE_CORAL_FAN: 8  # 气泡珊瑚扇
+    FIRE_CORAL_FAN: 8  # 火珊瑚扇
+    HORN_CORAL_FAN: 8  # 角珊瑚扇
+    DEAD_TUBE_CORAL_FAN: 8  # 枯死的管珊瑚扇
+    DEAD_BRAIN_CORAL_FAN: 8  # 枯死的脑珊瑚扇
+    DEAD_BUBBLE_CORAL_FAN: 8  # 枯死的气泡珊瑚扇
+    DEAD_FIRE_CORAL_FAN: 8  # 枯死的火珊瑚扇
+    DEAD_HORN_CORAL_FAN: 8  # 枯死的角珊瑚扇
+    SCUTE: 32  # 鳞甲
+    APPLE: 8  # 苹果
+    DIAMOND: 2048  # 钻石
+    IRON_INGOT: 64  # 铁锭
+    GOLD_INGOT: 128  # 金锭
+    NETHERITE_SCRAP: 4096  # 下界合金碎片
+    STRING: 4  # 线
+    FEATHER: 2  # 羽毛
+    GUNPOWDER: 8  # 火药
+    WHEAT_SEEDS: 2  # 小麦种子
+    WHEAT: 2  # 小麦
+    FLINT: 1  # 燧石
+    PORKCHOP: 4  # 猪排
+    WATER_BUCKET: 128  # 水桶
+    LAVA_BUCKET: 256  # 岩浆桶
+    SADDLE: 256  # 鞍
+    REDSTONE: 16  # 红石
+    COAL: 16  # 煤炭
+    SNOWBALL: 2  # 雪球
+    MILK_BUCKET: 256  # 牛奶桶
+    CLAY_BALL: 8  # 粘土球
+    SLIME_BALL: 8  # 粘液球
+    EGG: 4  # 鸡蛋
+    GLOWSTONE_DUST: 8  # 荧石粉
+    COD: 64  # 鳕鱼
+    SALMON: 64  # 三文鱼
+    TROPICAL_FISH: 128  # 热带鱼
+    PUFFERFISH: 64  # 河豚
+    INK_SAC: 16  # 墨囊
+    COCOA_BEANS: 16  # 可可豆
+    LAPIS_LAZULI: 16  # 青金石
+    BONE: 4  # 骨头
+    MELON_SLICE: 2  # 西瓜片
+    BEEF: 4  # 生牛肉
+    CHICKEN: 4  # 生鸡肉
+    ROTTEN_FLESH: 4  # 腐肉
+    ENDER_PEARL: 8  # 末影珍珠
+    BLAZE_ROD: 8  # 烈焰棒
+    GHAST_TEAR: 16  # 恶魂之泪
+    NETHER_WART: 8  # 下界疣
+    SPIDER_EYE: 4  # 蜘蛛眼
+    EMERALD: 128  # 绿宝石
+    CARROT: 2  # 胡萝卜
+    POTATO: 2  # 马铃薯
+    POISONOUS_POTATO: 8  # 毒马铃薯
+    SKELETON_SKULL: 128  # 骷髅头颅
+    WITHER_SKELETON_SKULL: 128  # 凋零骷髅头颅
+    ZOMBIE_HEAD: 128  # 僵尸头
+    CREEPER_HEAD: 128  # 爬行者头
+    DRAGON_HEAD: 1024  # 龙首
+    NETHER_STAR: 1024  # 下界之星
+    QUARTZ: 32  # 石英
+    PRISMARINE_SHARD: 8  # 海晶碎片
+    PRISMARINE_CRYSTALS: 16  # 海晶砂粒
+    RABBIT: 2  # 生兔肉
+    RABBIT_FOOT: 16  # 兔子脚
+    RABBIT_HIDE: 2  # 兔子皮
+    NAME_TAG: 256  # 命名牌
+    MUTTON: 2  # 生羊肉
+    CHORUS_FRUIT: 4  # 紫颂果
+    BEETROOT: 2  # 甜菜根
+    BEETROOT_SEEDS: 2  # 甜菜种子
+    DRAGON_BREATH: 512  # 龙息
+    ELYTRA: 0  # 鞘翅
+    SHULKER_SHELL: 32  # 潜影壳
+    TRIDENT: 512  # 三叉戟
+    PHANTOM_MEMBRANE: 16  # 幻翼膜
+    NAUTILUS_SHELL: 128  # 鹦鹉螺壳
+    HEART_OF_THE_SEA: 8192  # 海之心
+    BELL: 128  # 钟
+    SWEET_BERRIES: 2  # 甜浆果
+    SHROOMLIGHT: 4  # 菌光体
+    HONEYCOMB: 1  # 蜜脾
+    CRYING_OBSIDIAN: 64  # 哭泣的黑曜石
+    BLACKSTONE: 2  # 黑石
+    GILDED_BLACKSTONE: 16  # 镶金黑石
+    HONEY_BOTTLE: 1  # 蜂蜜瓶
+    PLAYER_HEAD: 0  # 玩家头颅
+    RAW_IRON: 32  # 生铁
+    RAW_GOLD: 64  # 生金
+    RAW_COPPER: 16  # 生铜
+    COPPER_INGOT: 32  # 铜锭
+MESSAGES:  # 消息提示
+  COMMAND_SUBCOMMAND: "请选择有效的子命令"
+  COMMAND_SELECT_ITEM: "请选择物品类型"
+  COMMAND_EMC_ITEM_MUST_HOLD: "查看物品 EMC 值需手持物品"
+  COMMAND_EMC_NONE: "该物品无法转化为 EMC"
+  COMMAND_ITEM_GIVEN: "已为你发放 {0}"
+  GENERAL_NO_INVENTORY_SPACE: "你的背包空间不足"
+  EVENT_CANT_OPEN_NOT_OWNER: "你无法打开其他玩家的 EMC 容器"
+  EVENT_PLACE_EMC_CHEST_ADJACENT: "EMC 容器不能放置在其他箱子旁边"
+  EVENT_CHEST_ITEM_SET: "已设置合成物品为手持物品"
+  EVENT_CHEST_ITEM_UNSET: "已停止物品合成"
+ITEMS:  # 物品相关文本
+  GENERAL_CRAFTING_ITEM: "合成材料"
+  TRANSMUTATION_ORB_NAME: "转化宝珠"
+  TRANSMUTATION_ORB_LORE:  # 转化宝珠描述
+    - "一件强大的魔法物品，"
+    - "可将各类物品转化为 EMC 值。"
+    - "EMC 值能通过简单的炼金术"
+    - "重新转化为其他物品"
+  TRANSMUTATION_ORB_INFO: "右键(长按)点击打开"
+  ALCHEMICAL_COAL_NAME: "炼金术煤炭"
+  MOBIUS_FUEL_NAME: "莫比乌斯燃料"
+  AETERNALIS_FUEL_NAME: "永恒燃料"
+  DARK_MATTER_NAME: "暗物质"
+  RED_MATTER_NAME: "红物质"
+  DISSOLUTION_CHEST_NAME: "分解箱"
+  DISSOLUTION_CHEST_LORE:  # 分解箱描述
+    - "此箱子可分解当中的物品，"
+    - "将其转化为 EMC 值并添加到"
+    - "放置者的 EMC 池中"
+  CONDENSATOR_CHEST_NAME: "结算箱"
+  CONDENSATOR_CHEST_LORE:  # 结算箱描述
+    - "此箱子可将 EMC 值重新结算为"
+    - "等值物品，并从放置者的 EMC 池中扣除数量。"
+    - "通过此方式合成物品需消耗 50% 额外 EMC"
+  CONDENSATOR_CHEST_SET_ITEM: "手持物品时，Shift + 右键点击可设置合成目标"
+GUI:  # 界面相关文本
+  SLOT_BORDER_NAME: "等价交换"
+  SLOT_FILLER_NAME: "此处无配方"
+  ORB_ITEM_ADDED: "已学习新物品的转化配方！"
+  EMC_ITEM_WITHDRAW_ONE: "合成 1 个"
+  EMC_ITEM_WITHDRAW_STACK: "合成一组"
+  EMC_INFO_NAME: "EMC 知识"
+  EMC_INFO_LORE_RECIPES: "已解锁 EMC 物品"
+  EMC_NOT_ENOUGH: "EMC 数量不足"
+  EMC_ITEM_META: "仅基础物品可转化（无附魔、自定义名称等）"
+DEBUG:  # 调试相关
+  SHOW_DEBUGGING_LOGS: false  # 显示调试日志
