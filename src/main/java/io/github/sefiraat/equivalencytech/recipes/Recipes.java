@@ -1,7 +1,6 @@
 package io.github.sefiraat.equivalencytech.recipes;
 
-import io.github.sefiraat.equivalencytech.EMCShopMiragEdge;;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.sefiraat.equivalencytech.EMCShopMiragEdge;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -222,70 +221,6 @@ public class Recipes {
         r.setIngredient('D', Material.NETHERITE_BLOCK);
         r.setIngredient('C', Material.CHEST);
         return r;
-    }
-
-    public static ItemStack[] getSFRecipeCoal1() {
-        return new ItemStack[] {
-                new ItemStack(Material.COAL),   new ItemStack(Material.COAL),   new ItemStack(Material.COAL),
-                new ItemStack(Material.COAL),   new ItemStack(Material.COAL),   null,
-                null,                           null,                           null
-        };
-    }
-
-    public static ItemStack[] getSFRecipeCoal2(SlimefunItemStack itemStack) {
-        return new ItemStack[] {
-                itemStack,   itemStack,   itemStack,
-                itemStack,   itemStack,   null,
-                null,        null,        null
-        };
-    }
-
-    public static ItemStack[] getSFRecipeCoal3(SlimefunItemStack itemStack) {
-        return new ItemStack[] {
-                itemStack,   itemStack,   itemStack,
-                itemStack,   itemStack,   null,
-                null,        null,        null
-        };
-    }
-
-    public static ItemStack[] getSFRecipeDarkMatter(SlimefunItemStack itemStack) {
-        return new ItemStack[] {
-                itemStack,   itemStack,                               itemStack,
-                itemStack,   new ItemStack(Material.NETHERITE_BLOCK),   itemStack,
-                itemStack,   itemStack,                               itemStack
-        };
-    }
-
-    public static ItemStack[] getSFRecipeRedMatter(SlimefunItemStack fuelStack, SlimefunItemStack matterStack) {
-        return new ItemStack[] {
-                fuelStack,  fuelStack,  fuelStack,
-                matterStack,matterStack,matterStack,
-                fuelStack,  fuelStack,  fuelStack
-        };
-    }
-
-    public static ItemStack[] getSFRecipeTransmutationOrb(SlimefunItemStack darkMatterStack, SlimefunItemStack redMatterStack) {
-        return new ItemStack[] {
-                new ItemStack(Material.DIAMOND_BLOCK),  darkMatterStack,    new ItemStack(Material.DIAMOND_BLOCK),
-                darkMatterStack,                        redMatterStack,     darkMatterStack,
-                new ItemStack(Material.DIAMOND_BLOCK),  darkMatterStack,    new ItemStack(Material.DIAMOND_BLOCK)
-        };
-    }
-
-    public static ItemStack[] getSFRecipeDissolutionChest(SlimefunItemStack mobiusStack) {
-        return new ItemStack[] {
-                mobiusStack,                            mobiusStack,                    mobiusStack,
-                new ItemStack(Material.DIAMOND_BLOCK),  new ItemStack(Material.CHEST),  new ItemStack(Material.DIAMOND_BLOCK),
-                mobiusStack,                            mobiusStack,                    mobiusStack
-        };
-    }
-
-    public static ItemStack[] getSFRecipeCondensatorChest(SlimefunItemStack mobiusStack, SlimefunItemStack disChestStack) {
-        return new ItemStack[] {
-                mobiusStack,                            mobiusStack,    mobiusStack,
-                new ItemStack(Material.NETHERITE_BLOCK),disChestStack,  new ItemStack(Material.NETHERITE_BLOCK),
-                mobiusStack,                            mobiusStack,    mobiusStack
-        };
     }
 
     public static Map<List<ItemStack>, ItemStack> getEQRecipes(EMCShopMiragEdge plugin) {

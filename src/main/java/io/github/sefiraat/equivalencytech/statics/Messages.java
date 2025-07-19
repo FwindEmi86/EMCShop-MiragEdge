@@ -13,7 +13,7 @@ import java.util.List;
 
 public final class Messages {
 
-    public static final String PREFIX = "" + ChatColor.GRAY + "[EMCTech] ";
+    public static final String PREFIX = "" + ChatColor.GRAY + "#8A2BE2等价交换 ";
     public static final String SUFFIX = "" + ChatColor.GRAY + "";
 
     public static final ChatColor THEME_WARNING = ChatColor.YELLOW;
@@ -34,36 +34,43 @@ public final class Messages {
     // region Commands
 
     public static String msgCmdSubcommand(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_NOTICE + plugin.getConfigMainClass().getStrings().getCommandSubcommand();
+        return PREFIX + THEME_NOTICE + "请使用子命令: /emcshop itememc, /emcshop emc, /emcshop giveitem";
     }
+
     public static String msgCmdEmcMustHold(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_WARNING + plugin.getConfigMainClass().getStrings().getCommandEmcMustHold();
+        return PREFIX + THEME_WARNING + "你必须手持一个物品来查看其EMC值";
     }
+
     public static String msgCmdEmcNone(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_WARNING + plugin.getConfigMainClass().getStrings().getCommandEmcNone();
+        return PREFIX + THEME_WARNING + "该物品没有EMC值";
     }
+
     public static String msgCmdEmcDisplay(Material m, Double emc) {
         return PREFIX + THEME_WARNING + Utils.materialFriendlyName(m) + " x 1 = EMC " + emc;
     }
+
     public static String msgCmdEmcDisplay(String s, Double emc) {
         return PREFIX + THEME_WARNING + s + " x 1 = EMC " + emc;
     }
+
     public static String msgCmdEmcDisplayStack(Material m, Integer amount, Double emc) {
         return PREFIX + THEME_WARNING + Utils.materialFriendlyName(m) + " x " + amount + " = EMC " + emc;
     }
+
     public static String msgCmdEmcDisplayStack(String s, Integer amount, Double emc) {
         return PREFIX + THEME_WARNING + s + " x " + amount + " = EMC " + emc;
     }
+
     public static String messageCommandSelectItem(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_NOTICE + plugin.getConfigMainClass().getStrings().getCommandSelectItem();
+        return PREFIX + THEME_NOTICE + "请选择要给予的物品: transmutationorb, dissolutionchest, condensatechest";
     }
 
     public static String messageCommandItemGiven(EMCShopMiragEdge plugin, String itemName) {
-        return PREFIX + THEME_NOTICE + MessageFormat.format(plugin.getConfigMainClass().getStrings().getCommandItemGiven(), itemName);
+        return PREFIX + THEME_NOTICE + "已给予物品: " + itemName;
     }
 
     public static String messageCommandEmc(EMCShopMiragEdge plugin, Player player) {
-        return PREFIX + THEME_NOTICE + "You have " + THEME_SUCCESS + ConfigMain.getPlayerEmc(plugin, player) + THEME_NOTICE + " EMC.";
+        return PREFIX + THEME_NOTICE + "你有 " + THEME_SUCCESS + ConfigMain.getPlayerEmc(plugin, player) + THEME_NOTICE + " EMC.";
     }
 
     // endregion
@@ -71,27 +78,27 @@ public final class Messages {
     // region GUI
 
     public static String messageGuiItemLearned(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_PASSIVE_CONGRATULATE + plugin.getConfigMainClass().getStrings().getGuiItemLearned();
+        return PREFIX + THEME_PASSIVE_CONGRATULATE + "你学会了新的等价交换物品!";
     }
 
     public static String messageGuiEmcGiven(EMCShopMiragEdge plugin, Player player, double emcBase, double emcTotal, int itemAmt, int burnRate) {
-        return PREFIX + THEME_SUCCESS + "+" + emcTotal + " EMC " + THEME_PASSIVE + "(" + emcBase + " * " + itemAmt + ")" + THEME_ERROR + " burn rate = " + burnRate + "%" + THEME_NOTICE + " : [EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
+        return PREFIX + THEME_SUCCESS + "+" + emcTotal + " EMC " + THEME_PASSIVE + "(" + emcBase + " * " + itemAmt + ")" + THEME_ERROR + " 燃烧率 = " + burnRate + "%" + THEME_NOTICE + " : [总EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
     }
 
     public static String messageGuiEmcRemoved(EMCShopMiragEdge plugin, Player player, double emcBase, double emcTotal, int itemAmt) {
-        return PREFIX + THEME_ERROR + "-" + emcTotal + " EMC " + THEME_PASSIVE + "(" + emcBase + " * " + itemAmt + ") : " + THEME_NOTICE + " [EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
+        return PREFIX + THEME_ERROR + "-" + emcTotal + " EMC " + THEME_PASSIVE + "(" + emcBase + " * " + itemAmt + ") : " + THEME_NOTICE + " [总EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
     }
 
     public static String messageGuiEmcNotEnough(EMCShopMiragEdge plugin, Player player) {
-        return PREFIX + THEME_ERROR + plugin.getConfigMainClass().getStrings().getGuiNotEnoughEmc() + THEME_NOTICE + " [EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
+        return PREFIX + THEME_ERROR + "EMC不足!" + THEME_NOTICE + " [总EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
     }
 
     public static String messageGuiNoSpace(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_ERROR + plugin.getConfigMainClass().getStrings().getGeneralNoInvSpace();
+        return PREFIX + THEME_ERROR + "背包空间不足!";
     }
 
     public static String messageGuiItemMeta(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_ERROR + plugin.getConfigMainClass().getStrings().getGuiItemMeta();
+        return PREFIX + THEME_ERROR + "物品元数据不匹配!";
     }
 
     // endregion
@@ -99,29 +106,29 @@ public final class Messages {
     // region Events
 
     public static String messageEventEMCChestPlace(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_ERROR + plugin.getConfigMainClass().getStrings().getEventAdjPlacement();
+        return PREFIX + THEME_ERROR + "你不能将EMC箱子放在相邻位置!";
     }
 
     public static String messageEventCantOpenNotOwner(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_ERROR + plugin.getConfigMainClass().getStrings().getEventCantOpenNotOwner();
+        return PREFIX + THEME_ERROR + "你不是这个箱子的主人!";
     }
 
     public static String messageEventItemSet(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_SUCCESS + plugin.getConfigMainClass().getStrings().getEventItemSet();
+        return PREFIX + THEME_SUCCESS + "已设置合成物品!";
     }
 
     public static String messageEventItemUnset(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_SUCCESS + plugin.getConfigMainClass().getStrings().getEventItemUnset();
+        return PREFIX + THEME_SUCCESS + "已取消合成物品!";
     }
 
     public static List<String> messageEMC2Installed(EMCShopMiragEdge plugin) {
         List<String> message = new ArrayList<>();
-        message.add(THEME_ERROR + "You have both EquiTech and EMC2 installed.");
-        message.add(THEME_NOTICE + "Be warned that this may cause issues. Visit the sites below for more. This message does NOT mean you need to remove EMC2/EquiTech.");
+        message.add(THEME_ERROR + "你同时安装了EquiTech和EMCShop插件");
+        message.add(THEME_NOTICE + "请注意这可能会导致冲突。查看以下链接了解更多信息。此消息并不意味着你需要移除EMCShop/EquiTech。");
         message.add("");
-        message.add(THEME_NOTICE + "Disable this message in the EquiTech config.");
+        message.add(THEME_NOTICE + "你可以在EquiTech配置中禁用此消息");
         message.add("");
-        message.add( THEME_WARNING + "https://github.com/Sefiraat/EquivalencyTech/");
+        message.add(THEME_WARNING + "https://github.com/Sefiraat/EquivalencyTech/");
         message.add(THEME_WARNING + "https://github.com/Seggan/EMC2");
         return message;
     }

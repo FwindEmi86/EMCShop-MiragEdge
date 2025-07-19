@@ -12,14 +12,13 @@ import io.github.sefiraat.equivalencytech.EMCShopMiragEdge;
 import io.github.sefiraat.equivalencytech.misc.Utils;
 import io.github.sefiraat.equivalencytech.statics.ContainerStorage;
 import io.github.sefiraat.equivalencytech.statics.Messages;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandAlias("EquivalencyTech|ET")
-@Description("EquivalencyTech Main")
+@CommandAlias("emcshop")
+@Description("EMC商店主命令")
 public class Commands extends BaseCommand {
 
     private final EMCShopMiragEdge plugin;
@@ -39,8 +38,46 @@ public class Commands extends BaseCommand {
         }
     }
 
-    @Subcommand("ItemEmc")
-    @Description("Displays the EMC value for the held item.")
+    @Subcommand("gui")
+    @Description("打开EMC商店界面")
+    public class Gui extends BaseCommand {
+
+        @Subcommand("main")
+        @Description("打开主菜单界面")
+        public void onMain(CommandSender sender) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                // 打开主菜单界面
+                //plugin.getMenuManager().openMainMenu(player);
+                player.sendMessage("§a已打开EMC商店主菜单");
+            }
+        }
+
+        @Subcommand("sell")
+        @Description("打开快速出售界面")
+        public void onSell(CommandSender sender) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                // 打开快速出售界面
+                //plugin.getMenuManager().openSellMenu(player);
+                player.sendMessage("§a已打开快速出售界面");
+            }
+        }
+
+        @Subcommand("pull")
+        @Description("打开快速购买界面")
+        public void onPull(CommandSender sender) {
+            if (sender instanceof Player) {
+                Player player = (Player) sender;
+                // 打开快速购买界面
+                //plugin.getMenuManager().openPullMenu(player);
+                player.sendMessage("§a已打开快速购买界面");
+            }
+        }
+    }
+
+    @Subcommand("itememc")
+    @Description("查看手持物品的EMC值")
     public class ItemEmc extends BaseCommand {
 
         @Default
@@ -48,19 +85,6 @@ public class Commands extends BaseCommand {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
                 ItemStack i = player.getInventory().getItemInMainHand();
-                SlimefunItem sfItem = null;
-                if (EMCShopMiragEdge.getInstance().getManagerSupportedPlugins().isInstalledSlimefun()) {
-                    sfItem = SlimefunItem.getByItem(i);
-                }
-                if (sfItem != null) {
-                    if (plugin.getEmcDefinitions().getEmcSlimefun().containsKey(sfItem.getId())) {
-                        player.sendMessage(Messages.msgCmdEmcDisplay(sfItem.getId(), Utils.getEMC(plugin, i)));
-                        player.sendMessage(Messages.msgCmdEmcDisplayStack(sfItem.getId(), i.getAmount(), Utils.getEMC(plugin, i) * i.getAmount()));
-                    } else {
-                        player.sendMessage(Messages.msgCmdEmcNone(plugin));
-                    }
-                    return;
-                }
                 if (i.getType() != Material.AIR) {
                     if (ContainerStorage.isCraftable(i, plugin)) {
                         if (plugin.getEmcDefinitions().getEmcEQ().containsKey(i.getItemMeta().getDisplayName())) {
@@ -84,8 +108,8 @@ public class Commands extends BaseCommand {
         }
     }
 
-    @Subcommand("Emc")
-    @Description("Displays the player's emc.")
+    @Subcommand("emc")
+    @Description("查看你的EMC值")
     public class Emc extends BaseCommand {
 
         @Default
@@ -97,9 +121,9 @@ public class Commands extends BaseCommand {
         }
     }
 
-    @Subcommand("GiveItem")
-    @CommandPermission("EquiTech.Admin")
-    @Description("Gives Debug Items")
+    @Subcommand("giveitem")
+    @CommandPermission("emcshop.admin")
+    @Description("获取EMC商店物品")
     public class GiveItem extends BaseCommand {
 
         @Default
@@ -109,27 +133,30 @@ public class Commands extends BaseCommand {
             }
         }
 
-        @Subcommand("TransmutationOrb")
+        @Subcommand("transmutationorb")
         @CommandCompletion("@players")
         public void onGiveItemOrb(CommandSender sender, OnlinePlayer player) {
             if (sender instanceof Player) {
                 Utils.givePlayerOrb(plugin, player.getPlayer());
+                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 转化法球");
             }
         }
 
-        @Subcommand("DissolutionChest")
+        @Subcommand("dissolutionchest")
         @CommandCompletion("@players")
         public void onGiveItemDChest(CommandSender sender, OnlinePlayer player) {
             if (sender instanceof Player) {
                 Utils.givePlayerDChest(plugin, player.getPlayer());
+                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 溶解箱");
             }
         }
 
-        @Subcommand("CondensateChest")
+        @Subcommand("condensatechest")
         @CommandCompletion("@players")
         public void onGiveItemCChest(CommandSender sender, OnlinePlayer player) {
             if (sender instanceof Player) {
                 Utils.givePlayerCChest(plugin, player.getPlayer());
+                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 凝聚箱");
             }
         }
     }

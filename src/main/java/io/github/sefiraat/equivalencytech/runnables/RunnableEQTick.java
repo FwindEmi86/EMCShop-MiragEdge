@@ -4,7 +4,6 @@ import io.github.sefiraat.equivalencytech.EMCShopMiragEdge;
 import io.github.sefiraat.equivalencytech.configuration.ConfigMain;
 import io.github.sefiraat.equivalencytech.misc.Utils;
 import io.github.sefiraat.equivalencytech.statics.ContainerStorage;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockState;
@@ -19,11 +18,9 @@ import java.util.HashMap;
 public class RunnableEQTick extends BukkitRunnable {
 
     public final EMCShopMiragEdge plugin;
-    public final boolean sf;
 
     public RunnableEQTick(EMCShopMiragEdge plugin) {
         this.plugin = plugin;
-        sf = EMCShopMiragEdge.getInstance().getManagerSupportedPlugins().isInstalledSlimefun();
     }
 
     @Override
@@ -50,18 +47,12 @@ public class RunnableEQTick extends BukkitRunnable {
                 for (ItemStack itemStack : inventory.getContents()) {
                     if (itemStack != null && itemStack.getType() != Material.AIR) {
                         boolean isEQ = ContainerStorage.isCraftable(itemStack, plugin);
-                        SlimefunItem sfItem = null;
-                        if (sf) {
-                            sfItem = SlimefunItem.getByItem(itemStack);
-                        }
                         Material material = itemStack.getType();
                         Double emcValue = Utils.roundDown((Utils.getEMC(plugin, itemStack) / 100) * 150, 2);
                         if (emcValue != null && Utils.canBeSynth(plugin, itemStack)) {
                             String entryName;
                             if (isEQ) {
                                 entryName = Utils.eqNameConfig(itemStack.getItemMeta().getDisplayName());
-                            } else if (sfItem != null) {
-                                entryName = sfItem.getId();
                             } else {
                                 entryName = material.toString();
                             }
@@ -112,21 +103,21 @@ public class RunnableEQTick extends BukkitRunnable {
 
     public static String getErrorDissolutionChest(int chestId, Location location) {
         return MessageFormat.format(
-            "A Dissolution chest (ID: {0}has been removed wrongly. " +
-                "Either replace with a vanilla chest (location : {1}) " +
-                "or remove from dissolution_chests.yml",
-            chestId,
-            location.toString()
+                "A Dissolution chest (ID: {0}has been removed wrongly. " +
+                        "Either replace with a vanilla chest (location : {1}) " +
+                        "or remove from dissolution_chests.yml",
+                chestId,
+                location.toString()
         );
     }
 
     public static String getErrorCondensateChest(int chestId, Location location) {
         return MessageFormat.format(
-            "A Condensate chest (ID: {0}has been removed wrongly. " +
-                "Either replace with a vanilla chest (location : {1})  " +
-                "or remove from condensate_chests.yml",
-            chestId,
-            location.toString()
+                "A Condensate chest (ID: {0}has been removed wrongly. " +
+                        "Either replace with a vanilla chest (location : {1})  " +
+                        "or remove from condensate_chests.yml",
+                chestId,
+                location.toString()
         );
     }
 }

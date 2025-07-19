@@ -3,10 +3,7 @@ package io.github.sefiraat.equivalencytech.recipes;
 import io.github.sefiraat.equivalencytech.EMCShopMiragEdge;
 import io.github.sefiraat.equivalencytech.statics.ContainerStorage;
 import io.github.sefiraat.equivalencytech.statics.DebugLogs;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import io.github.thebusybiscuit.slimefun4.implementation.items.backpacks.SlimefunBackpack;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.FurnaceRecipe;
@@ -27,11 +24,9 @@ import java.util.Map;
 
 public class EmcDefinitions {
 
-    private final Map<Material, Double> emcBase = new EnumMap<> (Material.class);
-    private final Map<String, Double> emcSFBase = new HashMap<>();
-    private final Map<Material, Double> emcExtended = new EnumMap<> (Material.class);
+    private final Map<Material, Double> emcBase = new EnumMap<>(Material.class);
+    private final Map<Material, Double> emcExtended = new EnumMap<>(Material.class);
     private final Map<String, Double> emcEQ = new HashMap<>();
-    private final Map<String, Double> emcSlimefun = new HashMap<>();
 
     public Map<Material, Double> getEmcExtended() {
         return emcExtended;
@@ -41,16 +36,11 @@ public class EmcDefinitions {
         return emcEQ;
     }
 
-    public Map<String, Double> getEmcSlimefun() {
-        return emcSlimefun;
-    }
-
     public EmcDefinitions(EMCShopMiragEdge plugin) {
         fillBase(plugin);
         fillSpecialCases();
         fillExtended(plugin);
         fillEQItems(plugin);
-        fillSlimefun(plugin);
     }
 
     private void fillBase(EMCShopMiragEdge plugin) {
@@ -60,11 +50,6 @@ public class EmcDefinitions {
                 continue;
             }
             emcBase.put(Material.matchMaterial(entry.getKey()), entry.getValue());
-            DebugLogs.logEmcBaseValueLoaded(plugin, entry.getKey(), entry.getValue());
-        }
-        Map<String, Double> slimefunBase = plugin.getConfigMainClass().getEmc().getEmcSlimefunValues();
-        for (Map.Entry<String, Double> entry : slimefunBase.entrySet()) {
-            emcSFBase.put(entry.getKey(), entry.getValue());
             DebugLogs.logEmcBaseValueLoaded(plugin, entry.getKey(), entry.getValue());
         }
     }
@@ -79,9 +64,11 @@ public class EmcDefinitions {
     private Double specialCaseNetheriteIngot() {
         return (emcBase.get(Material.GOLD_INGOT) * 4) + (emcBase.get(Material.NETHERITE_SCRAP) * 4);
     }
+
     private Double specialCaseDriedKelp() {
         return emcBase.get(Material.KELP);
     }
+
     private Double specialCaseBoneMeal() {
         return emcBase.get(Material.BONE) / 3;
     }
@@ -93,7 +80,7 @@ public class EmcDefinitions {
                 Double emcValue = getEmcValue(plugin, i, 1);
                 if (emcValue != null) {
                     DebugLogs.logEmcPosted(plugin, emcValue, 1);
-                    emcExtended.put(i.getType(), roundDown(emcValue,2));
+                    emcExtended.put(i.getType(), roundDown(emcValue, 2));
                 } else {
                     DebugLogs.logEmcNull(plugin, 1);
                 }
@@ -113,71 +100,8 @@ public class EmcDefinitions {
                 }
             }
             DebugLogs.logBoring(plugin, checkedItem.getItemMeta().getDisplayName() + " added to EQ for : " + itemAmount);
-            emcEQ.put(checkedItem.getItemMeta().getDisplayName(), roundDown(itemAmount,2));
+            emcEQ.put(checkedItem.getItemMeta().getDisplayName(), roundDown(itemAmount, 2));
         }
-    }
-
-    private void fillSlimefun(EMCShopMiragEdge plugin) {
-        if (EMCShopMiragEdge.getInstance().getManagerSupportedPlugins().isInstalledSlimefun()) {
-            for (SlimefunItem item : Slimefun.getRegistry().getEnabledSlimefunItems()) {
-                if (item instanceof SlimefunBackpack || !item.getAddon().getName().equals("Slimefun")) {
-                    continue;
-                }
-                DebugLogs.logBoring(plugin, item.getId() + " being checked");
-                Double emcValue = getSFEmcValue(plugin, item.getItem(), 1);
-                if (emcValue != null && emcValue != 0D) {
-                    DebugLogs.logEmcPosted(plugin, emcValue, 1);
-                    emcSlimefun.put(item.getId(), roundDown(emcValue,2));
-                } else {
-                    DebugLogs.logEmcNull(plugin, 1);
-                }
-            }
-        }
-    }
-
-    private Double getSFEmcValue(EMCShopMiragEdge plugin, ItemStack item, Integer nestLevel) {
-        SlimefunItem sfItem = SlimefunItem.getByItem(item);
-        if (sfItem == null) { // Vanilla
-            DebugLogs.logBoring(plugin, item.getType().toString() + StringUtils.repeat(" >", nestLevel) + " Vanilla - getting found vanilla value");
-            return getEmcValue(plugin, item, nestLevel + 1);
-        }
-        if (emcSFBase.containsKey(sfItem.getId())) {
-            DebugLogs.logBoring(plugin, sfItem.getId() + StringUtils.repeat(" >", nestLevel) + " Item in SF Base");
-            Double emcBaseValue = emcSFBase.get(sfItem.getId());
-            if (emcBaseValue == 0) {
-                DebugLogs.logBoring(plugin, sfItem.getId() + StringUtils.repeat(" >", nestLevel) + " Zero base val");
-                return null;
-            } else {
-                DebugLogs.logEmcIsBase(plugin, emcBaseValue, nestLevel);
-                return emcBaseValue;
-            }
-        }
-        if (emcSlimefun.containsKey(sfItem.getId())) { // Is Slimefun and already calculated
-            DebugLogs.logBoring(plugin, sfItem.getId() + StringUtils.repeat(" >", nestLevel) + " Already calculated at : " + emcSlimefun.get(sfItem.getId()));
-            return emcSlimefun.get(sfItem.getId());
-        }
-        ItemStack[] recipe = sfItem.getRecipe();
-        Double amount = 0D;
-        if (recipe == null) {
-            DebugLogs.logBoring(plugin, sfItem.getId() + StringUtils.repeat(" >", nestLevel) + " Not in base and no recipes. Nulling out.");
-            return null;
-        }
-        for (ItemStack recipeItem : recipe) {
-            if (recipeItem != null) {
-                DebugLogs.logBoring(plugin, sfItem.getId() + StringUtils.repeat(" >", nestLevel) + " Checking recipe item");
-                Double stackAmount = getSFEmcValue(plugin, recipeItem, nestLevel + 1);
-                if (stackAmount == null) {
-                    DebugLogs.logBoring(plugin, sfItem.getId() + StringUtils.repeat(" >", nestLevel) + " Null");
-                    return null;
-                }
-                amount += (stackAmount / sfItem.getRecipeOutput().getAmount());
-            }
-        }
-        if (amount == 0D) {
-            DebugLogs.logBoring(plugin, sfItem.getId() + StringUtils.repeat(" >", nestLevel) + " Stack is null due to 0. If base items is missing?");
-            return null;
-        }
-        return amount;
     }
 
     @Nullable
@@ -244,7 +168,7 @@ public class EmcDefinitions {
         } else {
             // Item not yet registered but DOES have valid recipes, lets check them out!
             for (Recipe r : Bukkit.getServer().getRecipesFor(i)) {
-                Double tempVal = checkRecipe(plugin, r,nestLevel + 1);
+                Double tempVal = checkRecipe(plugin, r, nestLevel + 1);
                 if (tempVal != null && (eVal.equals(0D) || tempVal < eVal)) {
                     DebugLogs.logRecipeCheaper(plugin, nestLevel);
                     eVal = tempVal;
@@ -289,9 +213,9 @@ public class EmcDefinitions {
     }
 
     @Nullable
-    private  Double checkShaped(EMCShopMiragEdge plugin, ShapedRecipe recipe, int nestLevel) {
+    private Double checkShaped(EMCShopMiragEdge plugin, ShapedRecipe recipe, int nestLevel) {
         DebugLogs.logRecipeType(plugin, "Shaped", nestLevel);
-        double eVal= 0D;
+        double eVal = 0D;
         for (ItemStack i2 : recipe.getIngredientMap().values()) {
             if (i2 != null) {
                 Double prVal = 0D;

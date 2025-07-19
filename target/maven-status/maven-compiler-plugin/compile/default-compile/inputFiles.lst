@@ -15,7 +15,6 @@ E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\item\builders\RedMatter.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\item\builders\TransmutationOrb.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\item\EQItems.java
-E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\item\EQSlimefunItem.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\listeners\BlockPlaceListener.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\listeners\ChestPlaceListener.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\listeners\CraftListener.java
@@ -23,7 +22,6 @@ E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\listeners\OrbOpenListener.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\listeners\PlayerJoinListener.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\misc\ManagerSupportedPlugins.java
-E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\misc\SlimefunEQAddon.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\misc\Utils.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\recipes\EmcDefinitions.java
 E:\code\Java\EMCShop-MiragEdge\src\main\java\io\github\sefiraat\equivalencytech\recipes\Recipes.java

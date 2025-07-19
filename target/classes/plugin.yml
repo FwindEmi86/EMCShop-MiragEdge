@@ -1,11 +1,9 @@
-name: EquivalencyTech
-version: ${project.version}
+name: EMCShopMiragEdge
+version: 0.01
 main: io.github.sefiraat.equivalencytech.EMCShopMiragEdge
-api-version: 1.16
-softdepend:
-  - Slimefun
+api-version: 1.21
 permissions:
   equitech.admin:
-    description: Allows access to /et
+    description: Allows access to /emcshop
   equitech.bypass:
     description: Can open/interact with EMC objects owned by other players

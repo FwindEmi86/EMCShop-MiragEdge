@@ -6,9 +6,8 @@ import io.github.sefiraat.equivalencytech.item.builders.DissolutionChest;
 import io.github.sefiraat.equivalencytech.item.builders.TransmutationOrb;
 import io.github.sefiraat.equivalencytech.statics.ContainerStorage;
 import io.github.sefiraat.equivalencytech.statics.Messages;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import net.md_5.bungee.api.ChatColor;
-import org.apache.commons.lang.WordUtils;
+import org.apache.commons.lang3.text.WordUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -23,13 +22,6 @@ public class Utils {
     }
 
     public static Double getEMC(EMCShopMiragEdge plugin, ItemStack itemStack) {
-        SlimefunItem sfItem = null;
-        if (EMCShopMiragEdge.getInstance().getManagerSupportedPlugins().isInstalledSlimefun()) {
-            sfItem = SlimefunItem.getByItem(itemStack);
-        }
-        if (sfItem != null) {
-            return plugin.getEmcDefinitions().getEmcSlimefun().get(sfItem.getId());
-        }
         if (ContainerStorage.isCraftable(itemStack, plugin)) {
             ItemStack eqStack = plugin.getEqItems().getEqItemMap().get(eqNameConfig(itemStack.getItemMeta().getDisplayName()));
             return plugin.getEmcDefinitions().getEmcEQ().get(eqStack.getItemMeta().getDisplayName());
@@ -53,20 +45,20 @@ public class Utils {
 
     public static void givePlayerOrb(EMCShopMiragEdge plugin, Player player) {
         TransmutationOrb i = plugin.getEqItems().getTransmutationOrb();
-        player.getPlayer().getInventory().addItem(i.getItemClone());
-        player.getPlayer().sendMessage(Messages.messageCommandItemGiven(plugin, i.getItem().getItemMeta().getDisplayName()));
+        player.getInventory().addItem(i.getItemClone());
+        player.sendMessage(Messages.messageCommandItemGiven(plugin, i.getItem().getItemMeta().getDisplayName()));
     }
 
     public static void givePlayerDChest(EMCShopMiragEdge plugin, Player player) {
         DissolutionChest i = plugin.getEqItems().getDissolutionChest();
-        player.getPlayer().getInventory().addItem(i.getItemClone());
-        player.getPlayer().sendMessage(Messages.messageCommandItemGiven(plugin, i.getItem().getItemMeta().getDisplayName()));
+        player.getInventory().addItem(i.getItemClone());
+        player.sendMessage(Messages.messageCommandItemGiven(plugin, i.getItem().getItemMeta().getDisplayName()));
     }
 
     public static void givePlayerCChest(EMCShopMiragEdge plugin, Player player) {
         CondensatorChest i = plugin.getEqItems().getCondensatorChest();
-        player.getPlayer().getInventory().addItem(i.getItemClone());
-        player.getPlayer().sendMessage(Messages.messageCommandItemGiven(plugin, i.getItem().getItemMeta().getDisplayName()));
+        player.getInventory().addItem(i.getItemClone());
+        player.sendMessage(Messages.messageCommandItemGiven(plugin, i.getItem().getItemMeta().getDisplayName()));
     }
 
     public static double roundDown(double number, int places) {
@@ -83,14 +75,9 @@ public class Utils {
 
     public static boolean canBeSynth(EMCShopMiragEdge plugin, ItemStack itemStack) {
         if (itemStack.hasItemMeta()) {
-            SlimefunItem sfItem = null;
-            if (EMCShopMiragEdge.getInstance().getManagerSupportedPlugins().isInstalledSlimefun()) {
-                sfItem = SlimefunItem.getByItem(itemStack);
-            }
-            return ContainerStorage.isCraftable(itemStack, plugin) || sfItem != null;
+            return ContainerStorage.isCraftable(itemStack, plugin);
         } else {
             return true;
         }
     }
-
 }
