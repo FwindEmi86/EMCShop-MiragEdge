@@ -13,7 +13,7 @@ import java.util.List;
 
 public final class Messages {
 
-    public static final String PREFIX = "" + ChatColor.GRAY + "#8A2BE2等价交换 ";
+    public static final String PREFIX = "" + ChatColor.GRAY + "等价交换 ";
     public static final String SUFFIX = "" + ChatColor.GRAY + "";
 
     public static final ChatColor THEME_WARNING = ChatColor.YELLOW;
@@ -82,7 +82,7 @@ public final class Messages {
     }
 
     public static String messageGuiEmcGiven(EMCShopMiragEdge plugin, Player player, double emcBase, double emcTotal, int itemAmt, int burnRate) {
-        return PREFIX + THEME_SUCCESS + "+" + emcTotal + " EMC " + THEME_PASSIVE + "(" + emcBase + " * " + itemAmt + ")" + THEME_ERROR + " 燃烧率 = " + burnRate + "%" + THEME_NOTICE + " : [总EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
+        return PREFIX + THEME_SUCCESS + "+" + emcTotal + " EMC " + THEME_PASSIVE + "(" + emcBase + " * " + itemAmt + ")" + THEME_ERROR + " 损耗 = " + burnRate + "%" + THEME_NOTICE + " : [总EMC : " + ConfigMain.getPlayerEmc(plugin, player) + "]";
     }
 
     public static String messageGuiEmcRemoved(EMCShopMiragEdge plugin, Player player, double emcBase, double emcTotal, int itemAmt) {

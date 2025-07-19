@@ -8,15 +8,23 @@ import io.github.sefiraat.equivalencytech.configuration.ConfigMain;
 import io.github.sefiraat.equivalencytech.misc.Utils;
 import io.github.sefiraat.equivalencytech.statics.ContainerStorage;
 import io.github.sefiraat.equivalencytech.statics.Messages;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.TranslatableComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class GuiTransmutationOrb extends PaginatedGui {
 
@@ -34,134 +42,190 @@ public class GuiTransmutationOrb extends PaginatedGui {
         this.player = player;
     }
 
+    /**
+     * 构建转换球GUI
+     *
+     * @param plugin 插件实例
+     * @param player 打开GUI的玩家
+     * @return 构建好的GUI实例
+     */
     public static GuiTransmutationOrb buildGui(EMCShopMiragEdge plugin, Player player) {
-
         int backSlot = 46;
         int forwardSlot = 52;
 
         GuiTransmutationOrb gui = new GuiTransmutationOrb(
                 6,
-                GuiTransmutationOrb.PAGE_SIZE,
+                PAGE_SIZE,
                 Messages.THEME_EMC_PURPLE + "等价交换商店",
                 plugin,
                 player
         );
 
-        gui.setItem(GuiTransmutationOrb.ARRAY_FILLER_SLOTS, GUIItems.guiOrbBorder(plugin));
-        gui.setItem(GuiTransmutationOrb.INFO_SLOT, GUIItems.guiOrbInfo(plugin, player));
+        gui.setItem(ARRAY_FILLER_SLOTS, GUIItems.guiOrbBorder(plugin));
+        gui.setItem(INFO_SLOT, GUIItems.guiOrbInfo(plugin, player));
 
         List<String> learnedItems = ConfigMain.getLearnedItems(plugin, player.getUniqueId().toString());
+        int leftOverSlots = PAGE_SIZE - (learnedItems.size() % PAGE_SIZE);
 
-        int leftOverSlots = GuiTransmutationOrb.PAGE_SIZE - (learnedItems.size() % GuiTransmutationOrb.PAGE_SIZE);
-
-        for (String s : learnedItems) {
-
+        // 添加已学习物品到GUI
+        for (String itemId : learnedItems) {
             ItemStack itemStack;
             GuiItem guiItem;
-            boolean isVanilla = false;
-
-            if (!plugin.getEqItems().getEqItemMap().containsKey(s)) {
-                isVanilla = true;
-            }
+            boolean isVanilla = !plugin.getEqItems().getEqItemMap().containsKey(itemId);
 
             if (isVanilla) {
-                itemStack = new ItemStack(Material.valueOf(s));
+                itemStack = new ItemStack(Material.valueOf(itemId));
             } else {
-                itemStack = plugin.getEqItems().getEqItemMap().get(s).clone();
+                itemStack = plugin.getEqItems().getEqItemMap().get(itemId).clone();
             }
 
+            // 跳过无效的EMC物品
             if (Utils.getEMC(plugin, itemStack) == null) {
-                // 已学习的物品EMC值为空 - 可能在配置中被移除 - 跳过
-                leftOverSlots += 1;
+                leftOverSlots++;
                 continue;
             }
 
-            guiItem = GUIItems.guiEMCItem(plugin, itemStack, isVanilla);
+            // 本地化物品显示名称
+            itemStack = localizeItem(plugin, itemStack, isVanilla);
 
+            guiItem = new GuiItem(itemStack);
             guiItem.setAction(event -> emcItemClicked(event, plugin));
             gui.addItem(guiItem);
         }
 
-
+        // 填充剩余空格
         for (int i = 0; i < leftOverSlots; i++) {
             gui.addItem(GUIItems.guiOrbFiller(plugin));
         }
 
+        // 设置输入槽
         setInputSlot(plugin, gui);
 
-        gui.setItem(backSlot, ItemBuilder.from(Material.PAPER).setName("上一页").asGuiItem(event -> {
-            event.setCancelled(true);
-            gui.previous();
-        }));
+        // 设置翻页按钮
+        gui.setItem(backSlot, ItemBuilder.from(Material.PAPER)
+                .name(Component.text("§e上一页"))
+                .asGuiItem(event -> {
+                    event.setCancelled(true);
+                    gui.previous();
+                }));
 
-        gui.setItem(forwardSlot, ItemBuilder.from(Material.PAPER).setName("下一页").asGuiItem(event -> {
-            event.setCancelled(true);
-            gui.next();
-        }));
+        gui.setItem(forwardSlot, ItemBuilder.from(Material.PAPER)
+                .name(Component.text("§e下一页"))
+                .asGuiItem(event -> {
+                    event.setCancelled(true);
+                    gui.next();
+                }));
 
+        // 设置拖拽和点击行为
         gui.setDragAction(event -> event.setCancelled(true));
         gui.setDefaultClickAction(event -> {
-            if (event.isShiftClick()) {
-                if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY && !event.getClickedInventory().equals(event.getInventory())) {
-                    inputItemAction(event, plugin, gui, true);
-                }
-                event.setCancelled(true);
+            if (event.isShiftClick() &&
+                    event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY &&
+                    !event.getClickedInventory().equals(event.getInventory())) {
+                inputItemAction(event, plugin, gui, true);
             }
+            event.setCancelled(true);
         });
 
         return gui;
+    }
 
+    /**
+     * 本地化物品显示名称（中文）
+     *
+     * @param plugin 插件实例
+     * @param itemStack 原始物品堆
+     * @param isVanilla 是否原版物品
+     * @return 本地化后的物品
+     */
+    private static ItemStack localizeItem(EMCShopMiragEdge plugin, ItemStack itemStack, boolean isVanilla) {
+        ItemStack displayStack = itemStack.clone();
+        ItemMeta meta = displayStack.getItemMeta();
+        if (meta == null) return displayStack;
+
+        double emc = Utils.getEMC(plugin, itemStack);
+        TextComponent emcLine = Component.text("EMC: " + emc)
+                .color(NamedTextColor.GRAY)
+                .decoration(TextDecoration.ITALIC, false);
+
+        // 保留原有Lore或创建新列表
+        List<Component> lore = meta.hasLore() ?
+                new ArrayList<>(meta.lore()) :
+                new ArrayList<>();
+        lore.add(emcLine);
+
+        // 处理物品名称
+        if (isVanilla) {
+            // 为原版物品创建中文翻译组件
+            TranslatableComponent translatedName = Component.translatable(itemStack.translationKey());
+            meta.displayName(translatedName);
+        } else if (!meta.hasDisplayName()) {
+            // 自定义物品若无名称则使用材质翻译键
+            meta.displayName(Component.translatable(itemStack.translationKey()));
+        }
+
+        meta.lore(lore);
+        displayStack.setItemMeta(meta);
+        return displayStack;
+    }
+
+    /**
+     * 打开GUI给玩家
+     */
+    public void openToPlayer() {
+        this.open(player);
     }
 
     private static void setInputSlot(EMCShopMiragEdge plugin, GuiTransmutationOrb gui) {
-        gui.addSlotAction(GuiTransmutationOrb.INPUT_SLOT, event -> {
+        gui.addSlotAction(INPUT_SLOT, event -> {
             inputItemAction(event, plugin, gui, false);
             event.setCancelled(true);
         });
     }
 
     private static void inputItemAction(InventoryClickEvent e, EMCShopMiragEdge plugin, PaginatedGui gui, boolean shifted) {
-
         Player player = (Player) e.getWhoClicked();
-        ItemStack itemStack;
+        ItemStack itemStack = shifted ? e.getCurrentItem() : player.getItemOnCursor();
 
-        if (shifted) {
-            itemStack = e.getCurrentItem();
-        } else {
-            itemStack = player.getItemOnCursor();
+        if (itemStack == null || itemStack.getType() == Material.AIR) {
+            return;
         }
 
         boolean isEQ = ContainerStorage.isCraftable(itemStack, plugin);
 
+        // 检查物品是否合法
         if (itemStack.hasItemMeta() && !isEQ) {
             player.sendMessage(Messages.messageGuiItemMeta(plugin));
             return;
         }
 
-        Material material = itemStack.getType();
         Double emcValue = Utils.getEMC(plugin, itemStack);
-
-        boolean mustClose = false;
-        if (emcValue != null) {
-            double totalEmc = emcValue * itemStack.getAmount();
-            String entryName;
-            if (isEQ) {
-                entryName = Utils.eqNameConfig(itemStack.getItemMeta().getDisplayName());
-            } else {
-                entryName = material.toString();
-            }
-            if (!ConfigMain.getLearnedItems(plugin, player.getUniqueId().toString()).contains(entryName)) {
-                ConfigMain.addLearnedItem(plugin, player.getUniqueId().toString(), entryName);
-                player.sendMessage(Messages.messageGuiItemLearned(plugin));
-                mustClose = true;
-            }
-            ConfigMain.addPlayerEmc(plugin, player, emcValue, totalEmc, itemStack.getAmount());
-            itemStack.setAmount(0);
-        } else {
+        if (emcValue == null) {
             player.sendMessage(Messages.msgCmdEmcNone(plugin));
+            return;
         }
-        if (mustClose) {
+
+        Material material = itemStack.getType();
+        double totalEmc = emcValue * itemStack.getAmount();
+        String entryName = isEQ ? Utils.eqNameConfig(itemStack.getItemMeta().getDisplayName()) : material.toString();
+        boolean learnedNew = false;
+
+        // 检查是否新物品
+        if (!ConfigMain.getLearnedItems(plugin, player.getUniqueId().toString()).contains(entryName)) {
+            ConfigMain.addLearnedItem(plugin, player.getUniqueId().toString(), entryName);
+            player.sendMessage(Messages.messageGuiItemLearned(plugin));
+            learnedNew = true;
+        }
+
+        // 添加EMC
+        ConfigMain.addPlayerEmc(plugin, player, emcValue, totalEmc, itemStack.getAmount());
+        itemStack.setAmount(0);
+
+        // 如果学习了新物品，关闭并重新打开GUI
+        if (learnedNew) {
             gui.close(player);
+            GuiTransmutationOrb newGui = buildGui(plugin, player);
+            newGui.openToPlayer();
         }
     }
 
@@ -180,33 +244,27 @@ public class GuiTransmutationOrb extends PaginatedGui {
     }
 
     private static void emcWithdrawOne(InventoryClickEvent e, EMCShopMiragEdge plugin) {
-
         Player player = (Player) e.getWhoClicked();
+        ItemStack clickedItem = e.getCurrentItem();
 
         if (player.getInventory().firstEmpty() == -1) {
             player.sendMessage(Messages.messageGuiNoSpace(plugin));
             return;
         }
 
-        ItemStack clickedItem = e.getCurrentItem();
         boolean isEQ = ContainerStorage.isCraftable(clickedItem, plugin);
         double playerEmc = ConfigMain.getPlayerEmc(plugin, player);
         Double emcValue = Utils.getEMC(plugin, clickedItem);
-        String itemName;
 
-        if (isEQ) {
-            itemName = Utils.eqNameConfig(clickedItem.getItemMeta().getDisplayName());
-        } else {
-            itemName = clickedItem.getType().toString();
-        }
+        if (emcValue == null) return;
+
+        String itemName = isEQ ? Utils.eqNameConfig(clickedItem.getItemMeta().getDisplayName()) : clickedItem.getType().toString();
 
         if (playerEmc >= emcValue) {
-            ItemStack itemStack;
-            if (isEQ) {
-                itemStack = plugin.getEqItems().getEqItemMap().get(itemName).clone();
-            } else {
-                itemStack = new ItemStack(e.getCurrentItem().getType());
-            }
+            ItemStack itemStack = isEQ ?
+                    plugin.getEqItems().getEqItemMap().get(itemName).clone() :
+                    new ItemStack(clickedItem.getType());
+
             player.getInventory().addItem(itemStack);
             ConfigMain.removePlayerEmc(plugin, player, emcValue);
             player.sendMessage(Messages.messageGuiEmcRemoved(plugin, player, emcValue, emcValue, 1));
@@ -216,51 +274,50 @@ public class GuiTransmutationOrb extends PaginatedGui {
     }
 
     private static void emcWithdrawStack(InventoryClickEvent e, EMCShopMiragEdge plugin) {
-
         Player player = (Player) e.getWhoClicked();
         double playerEmc = ConfigMain.getPlayerEmc(plugin, player);
         ItemStack clickedItem = e.getCurrentItem();
         Material material = clickedItem.getType();
 
-        boolean isEQ = ContainerStorage.isCraftable(e.getCurrentItem(), plugin);
-        String itemName;
+        boolean isEQ = ContainerStorage.isCraftable(clickedItem, plugin);
         Double emcValue = Utils.getEMC(plugin, clickedItem);
 
-        if (isEQ) {
-            itemName = Utils.eqNameConfig(e.getCurrentItem().getItemMeta().getDisplayName());
-        } else {
-            itemName = material.toString();
+        if (emcValue == null) return;
+
+        String itemName = isEQ ?
+                Utils.eqNameConfig(clickedItem.getItemMeta().getDisplayName()) :
+                material.toString();
+
+        int maxStack = clickedItem.getMaxStackSize();
+        int amount = maxStack;
+        double emcValueStack = emcValue * amount;
+
+        // 检查背包空间
+        if (player.getInventory().firstEmpty() == -1) {
+            player.sendMessage(Messages.messageGuiNoSpace(plugin));
+            return;
         }
 
-        int amount = clickedItem.getMaxStackSize();
-        if (emcValue != null) {
-            double emcValueStack = emcValue * amount;
-            if (player.getInventory().firstEmpty() == -1) {
-                player.sendMessage(Messages.messageGuiNoSpace(plugin));
-                return;
-            }
-            if (playerEmc < emcValueStack) {
-                double maxPossible = playerEmc / emcValue;
-                maxPossible = Math.floor(maxPossible);
-                amount = (int) maxPossible;
-                emcValueStack = emcValue * amount;
-            }
-            if (amount == 0) {
-                player.sendMessage(Messages.messageGuiEmcNotEnough(plugin, player));
-                return;
-            }
-
-            ItemStack itemStack;
-            if (isEQ) {
-                itemStack = plugin.getEqItems().getEqItemMap().get(itemName).clone();
-            } else {
-                itemStack = new ItemStack(e.getCurrentItem().getType());
-            }
-
-            itemStack.setAmount(amount);
-            player.getInventory().addItem(itemStack);
-            ConfigMain.removePlayerEmc(plugin, player, emcValueStack);
-            player.sendMessage(Messages.messageGuiEmcRemoved(plugin, player, emcValue, emcValueStack, amount));
+        // 检查EMC是否足够
+        if (playerEmc < emcValueStack) {
+            double maxPossible = Math.floor(playerEmc / emcValue);
+            amount = (int) maxPossible;
+            emcValueStack = emcValue * amount;
         }
+
+        if (amount == 0) {
+            player.sendMessage(Messages.messageGuiEmcNotEnough(plugin, player));
+            return;
+        }
+
+        // 创建物品
+        ItemStack itemStack = isEQ ?
+                plugin.getEqItems().getEqItemMap().get(itemName).clone() :
+                new ItemStack(material);
+
+        itemStack.setAmount(amount);
+        player.getInventory().addItem(itemStack);
+        ConfigMain.removePlayerEmc(plugin, player, emcValueStack);
+        player.sendMessage(Messages.messageGuiEmcRemoved(plugin, player, emcValue, emcValueStack, amount));
     }
 }

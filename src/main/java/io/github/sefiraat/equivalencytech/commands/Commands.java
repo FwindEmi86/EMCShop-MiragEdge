@@ -9,6 +9,7 @@ import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.Subcommand;
 import co.aikar.commands.bukkit.contexts.OnlinePlayer;
 import io.github.sefiraat.equivalencytech.EMCShopMiragEdge;
+import io.github.sefiraat.equivalencytech.gui.GuiTransmutationOrb;
 import io.github.sefiraat.equivalencytech.misc.Utils;
 import io.github.sefiraat.equivalencytech.statics.ContainerStorage;
 import io.github.sefiraat.equivalencytech.statics.Messages;
@@ -39,41 +40,24 @@ public class Commands extends BaseCommand {
     }
 
     @Subcommand("gui")
-    @Description("打开EMC商店界面")
-    public class Gui extends BaseCommand {
-
-        @Subcommand("main")
-        @Description("打开主菜单界面")
-        public void onMain(CommandSender sender) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                // 打开主菜单界面
-                //plugin.getMenuManager().openMainMenu(player);
-                player.sendMessage("§a已打开EMC商店主菜单");
-            }
+    @Description("打开EMC主菜单界面")
+    public void onMain(CommandSender sender) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("§c只有玩家才能执行此命令");
+            return;
         }
+        Player player = (Player) sender;
+        openTransmutationOrbMenu(player);
+    }
 
-        @Subcommand("sell")
-        @Description("打开快速出售界面")
-        public void onSell(CommandSender sender) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                // 打开快速出售界面
-                //plugin.getMenuManager().openSellMenu(player);
-                player.sendMessage("§a已打开快速出售界面");
-            }
-        }
-
-        @Subcommand("pull")
-        @Description("打开快速购买界面")
-        public void onPull(CommandSender sender) {
-            if (sender instanceof Player) {
-                Player player = (Player) sender;
-                // 打开快速购买界面
-                //plugin.getMenuManager().openPullMenu(player);
-                player.sendMessage("§a已打开快速购买界面");
-            }
-        }
+    /**
+     * 打开转换球菜单给玩家
+     * @param player 要打开菜单的玩家
+     */
+    private void openTransmutationOrbMenu(Player player) {
+        // 构建并打开转换球菜单
+        GuiTransmutationOrb gui = GuiTransmutationOrb.buildGui(plugin, player);
+        gui.openToPlayer(); // 使用新方法打开
     }
 
     @Subcommand("itememc")
@@ -138,7 +122,7 @@ public class Commands extends BaseCommand {
         public void onGiveItemOrb(CommandSender sender, OnlinePlayer player) {
             if (sender instanceof Player) {
                 Utils.givePlayerOrb(plugin, player.getPlayer());
-                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 转化法球");
+                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 转化宝珠");
             }
         }
 
@@ -147,7 +131,7 @@ public class Commands extends BaseCommand {
         public void onGiveItemDChest(CommandSender sender, OnlinePlayer player) {
             if (sender instanceof Player) {
                 Utils.givePlayerDChest(plugin, player.getPlayer());
-                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 溶解箱");
+                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 分解箱");
             }
         }
 
@@ -156,9 +140,8 @@ public class Commands extends BaseCommand {
         public void onGiveItemCChest(CommandSender sender, OnlinePlayer player) {
             if (sender instanceof Player) {
                 Utils.givePlayerCChest(plugin, player.getPlayer());
-                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 凝聚箱");
+                sender.sendMessage("§a已给予玩家 " + player.getPlayer().getName() + " 合成箱");
             }
         }
     }
-
 }

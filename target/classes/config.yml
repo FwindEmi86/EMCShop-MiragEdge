@@ -1,9 +1,10 @@
 # 请确保以下数值能合理匹配你的服务器经济体系
-# 默认燃烧率为 0，建议设置在 0 - 99 之间
-# 燃烧率 = 每次凝结时损失的 EMC 百分比（例如：BURN_RATE: 20 表示损失 20%）
+# 默认损耗为 0，建议设置在 0 - 99 之间
+# 损耗 = 每次合成时损失的 EMC 百分比（例如：BURN_RATE: 20 表示损失 20%）
+#修改配置文件请关闭服务器，重载会替换文件
 disable_EMC2_WARNING: false  # 禁用 EMC2 警告提示
 EMC_VALUES:
-  BURN_RATE: 0  # 燃烧率
+  BURN_RATE: 0  # 损耗
   BASE:  # 基础物品 EMC 值
     GRASS_BLOCK: 1  # 草方块
     DIRT: 1  # 泥土
@@ -264,17 +265,17 @@ ITEMS:  # 物品相关文本
   AETERNALIS_FUEL_NAME: "永恒燃料"
   DARK_MATTER_NAME: "暗物质"
   RED_MATTER_NAME: "红物质"
-  DISSOLUTION_CHEST_NAME: "分解箱"
+  DISSOLUTION_CHEST_NAME: "等价交换-自动分解箱"
   DISSOLUTION_CHEST_LORE:  # 分解箱描述
-    - "此箱子可分解当中的物品，"
+    - "此箱子可自动分解其中的物品，"
     - "将其转化为 EMC 值并添加到"
-    - "放置者的 EMC 池中"
-  CONDENSATOR_CHEST_NAME: "结算箱"
-  CONDENSATOR_CHEST_LORE:  # 结算箱描述
-    - "此箱子可将 EMC 值重新结算为"
-    - "等值物品，并从放置者的 EMC 池中扣除数量。"
-    - "通过此方式合成物品需消耗 50% 额外 EMC"
-  CONDENSATOR_CHEST_SET_ITEM: "手持物品时，Shift + 右键点击可设置合成目标"
+    - "放置者的 EMC 数额中"
+  CONDENSATOR_CHEST_NAME: "等价交换-自动合成箱"
+  CONDENSATOR_CHEST_LORE:  # 合成箱描述
+    - "此箱子可使用放置者的 EMC 值"
+    - "自动合成等值物品"
+    - "此方式合成物品需额外消耗50%EMC"
+  CONDENSATOR_CHEST_SET_ITEM: "手持需合成物品，蹲下+右键(长按)点击箱子设置合成目标"
 GUI:  # 界面相关文本
   SLOT_BORDER_NAME: "等价交换"
   SLOT_FILLER_NAME: "此处无配方"

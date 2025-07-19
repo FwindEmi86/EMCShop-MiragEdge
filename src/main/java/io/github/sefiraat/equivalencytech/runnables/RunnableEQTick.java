@@ -101,11 +101,11 @@ public class RunnableEQTick extends BukkitRunnable {
         }
     }
 
+    // 汉化错误消息
     public static String getErrorDissolutionChest(int chestId, Location location) {
         return MessageFormat.format(
-                "A Dissolution chest (ID: {0}has been removed wrongly. " +
-                        "Either replace with a vanilla chest (location : {1}) " +
-                        "or remove from dissolution_chests.yml",
+                "自动分解箱 (ID: {0}) 被错误移除。请在该位置放置普通箱子 (位置: {1}) " +
+                        "或从 dissolution_chests.yml 中移除对应配置",
                 chestId,
                 location.toString()
         );
@@ -113,9 +113,8 @@ public class RunnableEQTick extends BukkitRunnable {
 
     public static String getErrorCondensateChest(int chestId, Location location) {
         return MessageFormat.format(
-                "A Condensate chest (ID: {0}has been removed wrongly. " +
-                        "Either replace with a vanilla chest (location : {1})  " +
-                        "or remove from condensate_chests.yml",
+                "自动合成箱 (ID: {0}) 被错误移除。请在该位置放置普通箱子 (位置: {1}) " +
+                        "或从 condensate_chests.yml 中移除对应配置",
                 chestId,
                 location.toString()
         );

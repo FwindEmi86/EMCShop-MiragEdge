@@ -1,5 +1,5 @@
 name: EMCShopMiragEdge
-version: 0.01
+version: 1.6
 main: io.github.sefiraat.equivalencytech.EMCShopMiragEdge
 api-version: 1.21
 permissions:

@@ -6,7 +6,7 @@
 
     <groupId>io.github.fwindemi86</groupId>
     <artifactId>EMCShop-MiragEdge</artifactId>
-    <version>1.1</version>
+    <version>1.6</version>
 
     <build>
         <plugins>
@@ -193,6 +193,18 @@
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-api</artifactId>
+            <version>4.17.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-text-serializer-legacy</artifactId>
+            <version>4.17.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

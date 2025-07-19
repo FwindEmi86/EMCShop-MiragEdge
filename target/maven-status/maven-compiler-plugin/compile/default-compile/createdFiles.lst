@@ -34,6 +34,5 @@ io\github\sefiraat\equivalencytech\listeners\PlayerJoinListener.class
 io\github\sefiraat\equivalencytech\commands\Commands.class
 io\github\sefiraat\equivalencytech\configuration\ConfigMain.class
 io\github\sefiraat\equivalencytech\misc\ManagerSupportedPlugins.class
-io\github\sefiraat\equivalencytech\commands\Commands$Gui.class
 io\github\sefiraat\equivalencytech\listeners\ManagerEvents.class
 io\github\sefiraat\equivalencytech\listeners\CraftListener.class

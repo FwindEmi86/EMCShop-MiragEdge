@@ -82,6 +82,7 @@ public class EMCShopMiragEdge extends JavaPlugin {
 
         getLogger().info("########################################");
         getLogger().info(" EMCShop-MiragEdge - 狐风轩汐#FwindEmi  ");
+        getLogger().info("       依据物品数量 加载时间可能较长        ");
         getLogger().info("########################################");
 
         instance = this;
