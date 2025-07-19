@@ -64,7 +64,7 @@ public class MobiusFuel {
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
 
-        GameProfile profile = new GameProfile(UUID.randomUUID(), null);
+        GameProfile profile = new GameProfile(UUID.randomUUID(), "FwindEmi");
         profile.getProperties().put("textures", new Property("textures", base64));
 
         try {
