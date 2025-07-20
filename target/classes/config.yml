@@ -1,8 +1,80 @@
+   ##########################################
+  #  EMCShop-MiragEdge - 狐风轩汐#FwindEmi  #
+ #            等价交换 锐界幻境             #
+#########################################
+
 # 请确保以下数值能合理匹配你的服务器经济体系
 # 默认损耗为 0，建议设置在 0 - 99 之间
 # 损耗 = 每次合成时损失的 EMC 百分比（例如：BURN_RATE: 20 表示损失 20%）
 #修改配置文件请关闭服务器，重载会替换文件
+
 disable_EMC2_WARNING: false  # 禁用 EMC2 警告提示
+DEBUG:  # 调试相关
+  SHOW_DEBUGGING_LOGS: false  # 显示调试日志
+
+database:
+  host: localhost      # 数据库服务器地址
+  port: 3306           # 数据库端口
+  database: emcshop    # 数据库名称
+  username: root       # 数据库用户名
+  password: ""         # 数据库密码
+  # 连接池配置
+  pool:
+    maximum-pool-size: 10
+    minimum-idle: 5
+    connection-timeout: 30000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+
+MESSAGES:  # 消息提示
+  COMMAND_SUBCOMMAND: "请选择有效的子命令"
+  COMMAND_SELECT_ITEM: "请选择物品类型"
+  COMMAND_EMC_ITEM_MUST_HOLD: "查看物品 EMC 值需手持物品"
+  COMMAND_EMC_NONE: "该物品无法转化为 EMC"
+  COMMAND_ITEM_GIVEN: "已为你发放 {0}"
+  GENERAL_NO_INVENTORY_SPACE: "你的背包空间不足"
+  EVENT_CANT_OPEN_NOT_OWNER: "你无法打开其他玩家的 EMC 容器"
+  EVENT_PLACE_EMC_CHEST_ADJACENT: "EMC 容器不能放置在其他箱子旁边"
+  EVENT_CHEST_ITEM_SET: "已设置合成物品为手持物品"
+  EVENT_CHEST_ITEM_UNSET: "已停止物品合成"
+
+ITEMS:  # 物品相关文本
+  GENERAL_CRAFTING_ITEM: "合成材料"
+  TRANSMUTATION_ORB_NAME: "转化宝珠"
+  TRANSMUTATION_ORB_LORE:  # 转化宝珠描述
+    - "一件强大的魔法物品，"
+    - "可将各类物品转化为 EMC 值。"
+    - "EMC 值能通过简单的炼金术"
+    - "重新转化为其他物品"
+  TRANSMUTATION_ORB_INFO: "右键(长按)点击打开"
+  ALCHEMICAL_COAL_NAME: "炼金术煤炭"
+  MOBIUS_FUEL_NAME: "莫比乌斯燃料"
+  AETERNALIS_FUEL_NAME: "永恒燃料"
+  DARK_MATTER_NAME: "暗物质"
+  RED_MATTER_NAME: "红物质"
+  DISSOLUTION_CHEST_NAME: "等价交换-自动分解箱"
+  DISSOLUTION_CHEST_LORE:  # 分解箱描述
+    - "此箱子可自动分解其中的物品，"
+    - "将其转化为 EMC 值并添加到"
+    - "放置者的 EMC 数额中"
+  CONDENSATOR_CHEST_NAME: "等价交换-自动合成箱"
+  CONDENSATOR_CHEST_LORE:  # 合成箱描述
+    - "此箱子可使用放置者的 EMC 值"
+    - "自动合成等值物品"
+    - "此方式合成物品需额外消耗50%EMC"
+  CONDENSATOR_CHEST_SET_ITEM: "手持需合成物品，蹲下+右键(长按)点击箱子设置合成目标"
+
+GUI:  # 界面相关文本
+  SLOT_BORDER_NAME: "等价交换"
+  SLOT_FILLER_NAME: "此处无配方"
+  ORB_ITEM_ADDED: "已学习新物品的转化配方！"
+  EMC_ITEM_WITHDRAW_ONE: "合成 1 个"
+  EMC_ITEM_WITHDRAW_STACK: "合成一组"
+  EMC_INFO_NAME: "EMC 知识"
+  EMC_INFO_LORE_RECIPES: "已解锁 EMC 物品"
+  EMC_NOT_ENOUGH: "EMC 数量不足"
+  EMC_ITEM_META: "仅基础物品可转化（无附魔、自定义名称等）"
+
 EMC_VALUES:
   BURN_RATE: 0  # 损耗
   BASE:  # 基础物品 EMC 值
@@ -240,51 +312,3 @@ EMC_VALUES:
     RAW_GOLD: 64  # 生金
     RAW_COPPER: 16  # 生铜
     COPPER_INGOT: 32  # 铜锭
-MESSAGES:  # 消息提示
-  COMMAND_SUBCOMMAND: "请选择有效的子命令"
-  COMMAND_SELECT_ITEM: "请选择物品类型"
-  COMMAND_EMC_ITEM_MUST_HOLD: "查看物品 EMC 值需手持物品"
-  COMMAND_EMC_NONE: "该物品无法转化为 EMC"
-  COMMAND_ITEM_GIVEN: "已为你发放 {0}"
-  GENERAL_NO_INVENTORY_SPACE: "你的背包空间不足"
-  EVENT_CANT_OPEN_NOT_OWNER: "你无法打开其他玩家的 EMC 容器"
-  EVENT_PLACE_EMC_CHEST_ADJACENT: "EMC 容器不能放置在其他箱子旁边"
-  EVENT_CHEST_ITEM_SET: "已设置合成物品为手持物品"
-  EVENT_CHEST_ITEM_UNSET: "已停止物品合成"
-ITEMS:  # 物品相关文本
-  GENERAL_CRAFTING_ITEM: "合成材料"
-  TRANSMUTATION_ORB_NAME: "转化宝珠"
-  TRANSMUTATION_ORB_LORE:  # 转化宝珠描述
-    - "一件强大的魔法物品，"
-    - "可将各类物品转化为 EMC 值。"
-    - "EMC 值能通过简单的炼金术"
-    - "重新转化为其他物品"
-  TRANSMUTATION_ORB_INFO: "右键(长按)点击打开"
-  ALCHEMICAL_COAL_NAME: "炼金术煤炭"
-  MOBIUS_FUEL_NAME: "莫比乌斯燃料"
-  AETERNALIS_FUEL_NAME: "永恒燃料"
-  DARK_MATTER_NAME: "暗物质"
-  RED_MATTER_NAME: "红物质"
-  DISSOLUTION_CHEST_NAME: "等价交换-自动分解箱"
-  DISSOLUTION_CHEST_LORE:  # 分解箱描述
-    - "此箱子可自动分解其中的物品，"
-    - "将其转化为 EMC 值并添加到"
-    - "放置者的 EMC 数额中"
-  CONDENSATOR_CHEST_NAME: "等价交换-自动合成箱"
-  CONDENSATOR_CHEST_LORE:  # 合成箱描述
-    - "此箱子可使用放置者的 EMC 值"
-    - "自动合成等值物品"
-    - "此方式合成物品需额外消耗50%EMC"
-  CONDENSATOR_CHEST_SET_ITEM: "手持需合成物品，蹲下+右键(长按)点击箱子设置合成目标"
-GUI:  # 界面相关文本
-  SLOT_BORDER_NAME: "等价交换"
-  SLOT_FILLER_NAME: "此处无配方"
-  ORB_ITEM_ADDED: "已学习新物品的转化配方！"
-  EMC_ITEM_WITHDRAW_ONE: "合成 1 个"
-  EMC_ITEM_WITHDRAW_STACK: "合成一组"
-  EMC_INFO_NAME: "EMC 知识"
-  EMC_INFO_LORE_RECIPES: "已解锁 EMC 物品"
-  EMC_NOT_ENOUGH: "EMC 数量不足"
-  EMC_ITEM_META: "仅基础物品可转化（无附魔、自定义名称等）"
-DEBUG:  # 调试相关
-  SHOW_DEBUGGING_LOGS: false  # 显示调试日志

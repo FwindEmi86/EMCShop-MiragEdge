@@ -42,7 +42,7 @@ public final class Messages {
     }
 
     public static String msgCmdEmcNone(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_WARNING + "该物品没有EMC值";
+        return PREFIX + THEME_WARNING + "该物品不在等价交换列表中";
     }
 
     public static String msgCmdEmcDisplay(Material m, Double emc) {
@@ -78,7 +78,7 @@ public final class Messages {
     // region GUI
 
     public static String messageGuiItemLearned(EMCShopMiragEdge plugin) {
-        return PREFIX + THEME_PASSIVE_CONGRATULATE + "你学会了新的等价交换物品!";
+        return PREFIX + THEME_PASSIVE_CONGRATULATE + "你学会了新的物品!";
     }
 
     public static String messageGuiEmcGiven(EMCShopMiragEdge plugin, Player player, double emcBase, double emcTotal, int itemAmt, int burnRate) {

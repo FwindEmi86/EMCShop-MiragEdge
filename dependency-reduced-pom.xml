@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.fwindemi86</groupId>
   <artifactId>EMCShop-MiragEdge</artifactId>
-  <version>1.6</version>
+  <version>1.9</version>
   <build>
     <plugins>
       <plugin>
@@ -142,6 +142,12 @@
       <artifactId>adventure-text-serializer-legacy</artifactId>
       <version>4.17.0</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.33</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
   <properties>

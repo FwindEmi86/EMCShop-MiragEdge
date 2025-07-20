@@ -6,7 +6,7 @@
 
     <groupId>io.github.fwindemi86</groupId>
     <artifactId>EMCShop-MiragEdge</artifactId>
-    <version>1.6</version>
+    <version>1.9</version>
 
     <build>
         <plugins>

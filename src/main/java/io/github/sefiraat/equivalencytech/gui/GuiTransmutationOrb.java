@@ -145,7 +145,13 @@ public class GuiTransmutationOrb extends PaginatedGui {
 
         double emc = Utils.getEMC(plugin, itemStack);
         TextComponent emcLine = Component.text("EMC: " + emc)
-                .color(NamedTextColor.GRAY)
+                .color(NamedTextColor.YELLOW)
+                .decoration(TextDecoration.ITALIC, false);
+        TextComponent leftLine = Component.text("左键兑换一个")
+                .color(NamedTextColor.BLUE)
+                .decoration(TextDecoration.ITALIC, false);
+        TextComponent rightLine = Component.text("右键兑换一组")
+                .color(NamedTextColor.BLUE)
                 .decoration(TextDecoration.ITALIC, false);
 
         // 保留原有Lore或创建新列表
@@ -153,6 +159,8 @@ public class GuiTransmutationOrb extends PaginatedGui {
                 new ArrayList<>(meta.lore()) :
                 new ArrayList<>();
         lore.add(emcLine);
+        lore.add(leftLine);
+        lore.add(rightLine);
 
         // 处理物品名称
         if (isVanilla) {
