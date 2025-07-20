@@ -62,7 +62,9 @@ ITEMS:  # 物品相关文本
     - "此箱子可使用放置者的 EMC 值"
     - "自动合成等值物品"
     - "此方式合成物品需额外消耗50%EMC"
-  CONDENSATOR_CHEST_SET_ITEM: "手持需合成物品，蹲下+右键(长按)点击箱子设置合成目标"
+  CONDENSATOR_CHEST_SET_ITEM:
+    - "手持需合成物品"
+    - "蹲下+右键(长按)点击箱子设置合成目标"
 
 GUI:  # 界面相关文本
   SLOT_BORDER_NAME: "等价交换"
@@ -78,237 +80,337 @@ GUI:  # 界面相关文本
 EMC_VALUES:
   BURN_RATE: 0  # 损耗
   BASE:  # 基础物品 EMC 值
-    GRASS_BLOCK: 1  # 草方块
-    DIRT: 1  # 泥土
-    PODZOL: 1  # 灰化土
-    CRIMSON_NYLIUM: 1  # 绯红菌岩
-    WARPED_NYLIUM: 1  # 诡异菌岩
-    COBBLESTONE: 1  # 圆石
-    DIORITE: 1  # 闪长岩
-    ANDESITE: 1  # 安山岩
-    GRANITE: 1  # 花岗岩
-    OAK_SAPLING: 2  # 橡树树苗
-    SPRUCE_SAPLING: 2  # 云杉树苗
-    BIRCH_SAPLING: 2  # 白桦树苗
-    JUNGLE_SAPLING: 2  # 丛林树苗
-    ACACIA_SAPLING: 2  # 金合欢树苗
-    DARK_OAK_SAPLING: 2  # 深色橡树树苗
-    SAND: 1  # 沙子
-    RED_SAND: 1  # 红沙
-    GRAVEL: 1  # 砂砾
-    GOLD_ORE: 0  # 金矿
-    IRON_ORE: 0  # 铁矿
-    COAL_ORE: 0  # 煤矿
-    NETHER_GOLD_ORE: 0  # 下界金矿
-    OAK_LOG: 4  # 橡树原木
-    SPRUCE_LOG: 4  # 云杉原木
-    BIRCH_LOG: 4  # 白桦原木
-    JUNGLE_LOG: 4  # 丛林原木
-    ACACIA_LOG: 4  # 金合欢原木
-    DARK_OAK_LOG: 4  # 深色橡树原木
-    CRIMSON_STEM: 4  # 绯红菌柄
-    WARPED_STEM: 4  # 诡异菌柄
-    STRIPPED_OAK_LOG: 4  # 去皮橡树原木
-    STRIPPED_SPRUCE_LOG: 4  # 去皮云杉原木
-    STRIPPED_BIRCH_LOG: 4  # 去皮白桦原木
-    STRIPPED_JUNGLE_LOG: 4  # 去皮丛林原木
-    STRIPPED_ACACIA_LOG: 4  # 去皮金合欢原木
-    STRIPPED_DARK_OAK_LOG: 4  # 去皮深色橡树原木
-    STRIPPED_CRIMSON_STEM: 4  # 去皮绯红菌柄
-    STRIPPED_WARPED_STEM: 4  # 去皮诡异菌柄
-    STRIPPED_OAK_WOOD: 4  # 去皮橡树木
-    STRIPPED_SPRUCE_WOOD: 4  # 去皮云杉木
-    STRIPPED_BIRCH_WOOD: 4  # 去皮白桦木
-    STRIPPED_JUNGLE_WOOD: 4  # 去皮丛林木
-    STRIPPED_ACACIA_WOOD: 4  # 去皮金合欢木
-    STRIPPED_DARK_OAK_WOOD: 4  # 去皮深色橡树
-    STRIPPED_CRIMSON_HYPHAE: 4  # 去皮绯红菌索
-    STRIPPED_WARPED_HYPHAE: 4  # 去皮诡异菌索
-    OAK_WOOD: 4  # 橡树木
-    SPRUCE_WOOD: 4  # 云杉木
-    BIRCH_WOOD: 4  # 白桦木
-    JUNGLE_WOOD: 4  # 丛林木
-    ACACIA_WOOD: 4  # 金合欢木
-    DARK_OAK_WOOD: 4  # 深色橡树木
-    CRIMSON_HYPHAE: 4  # 绯红菌索
-    WARPED_HYPHAE: 4  # 诡异菌索
-    OAK_LEAVES: 1  # 橡树叶子
-    SPRUCE_LEAVES: 1  # 云杉叶子
-    BIRCH_LEAVES: 1  # 白桦叶子
-    JUNGLE_LEAVES: 1  # 丛林叶子
-    ACACIA_LEAVES: 1  # 金合欢叶子
-    DARK_OAK_LEAVES: 1  # 深色橡树叶子
-    WET_SPONGE: 16  # 湿海绵
-    LAPIS_ORE: 0  # 青金石矿
-    COBWEB: 4  # 蜘蛛网
-    GRASS: 1  # 草
-    FERN: 1  # 蕨
-    DEAD_BUSH: 1  # 枯灌木
-    SEAGRASS: 1  # 海草
-    SEA_PICKLE: 4  # 海泡菜
-    DANDELION: 2  # 蒲公英
-    POPPY: 2  # 虞美人
-    BLUE_ORCHID: 2  # 蓝色兰花
-    ALLIUM: 2  # 绒球葱
-    AZURE_BLUET: 2  #  Azure 蓝铃花
-    RED_TULIP: 2  # 红色郁金香
-    ORANGE_TULIP: 2  # 橙色郁金香
-    WHITE_TULIP: 2  # 白色郁金香
-    PINK_TULIP: 2  # 粉色郁金香
-    OXEYE_DAISY: 2  # 滨菊
-    CORNFLOWER: 2  # 矢车菊
-    LILY_OF_THE_VALLEY: 2  # 铃兰
-    WITHER_ROSE: 32  # 凋零玫瑰
-    BROWN_MUSHROOM: 4  # 棕色蘑菇
-    RED_MUSHROOM: 4  # 红色蘑菇
-    CRIMSON_FUNGUS: 4  # 绯红真菌
-    WARPED_FUNGUS: 4  # 诡异真菌
-    CRIMSON_ROOTS: 2  # 绯红菌根
-    WARPED_ROOTS: 2  # 诡异菌根
-    WEEPING_VINES: 2  # 垂泪藤
-    TWISTING_VINES: 2  # 缠怨藤
-    SUGAR_CANE: 2  # 甘蔗
-    KELP: 1  # 海带
-    BAMBOO: 1  # 竹子
-    OBSIDIAN: 16  # 黑曜石
-    CHORUS_PLANT: 2  # 紫颂植物
-    CHORUS_FLOWER: 8  # 紫颂花
-    DIAMOND_ORE: 0  # 钻石矿
-    REDSTONE_ORE: 0  # 红石矿
-    ICE: 1  # 冰
-    CACTUS: 1  # 仙人掌
-    PUMPKIN: 4  # 南瓜
-    CARVED_PUMPKIN: 4  # 雕刻南瓜
-    NETHERRACK: 1  # 下界岩
-    SOUL_SAND: 2  # 灵魂沙
-    SOUL_SOIL: 2  # 灵魂土
-    BASALT: 1  # 玄武岩
-    BROWN_MUSHROOM_BLOCK: 4  # 棕色蘑菇块
-    RED_MUSHROOM_BLOCK: 4  # 红色蘑菇块
-    MUSHROOM_STEM: 4  # 蘑菇柄
-    VINE: 2  # 藤蔓
-    MYCELIUM: 8  # 菌丝
-    LILY_PAD: 8  # 睡莲
-    END_STONE: 2  # 末地石
-    DRAGON_EGG: 16384  # 龙蛋
-    EMERALD_ORE: 0  # 绿宝石矿
-    NETHER_QUARTZ_ORE: 0  # 下界石英矿
-    SUNFLOWER: 2  # 向日葵
-    LILAC: 2  # 丁香
-    ROSE_BUSH: 2  # 玫瑰丛
-    PEONY: 2  # 牡丹
-    TALL_GRASS: 1  # 高草
-    LARGE_FERN: 1  # 大蕨
-    TURTLE_EGG: 64  # 海龟蛋
-    DEAD_TUBE_CORAL_BLOCK: 8  # 枯死的管珊瑚块
-    DEAD_BRAIN_CORAL_BLOCK: 8  # 枯死的脑珊瑚块
-    DEAD_BUBBLE_CORAL_BLOCK: 8  # 枯死的气泡珊瑚块
-    DEAD_FIRE_CORAL_BLOCK: 8  # 枯死的火珊瑚块
-    DEAD_HORN_CORAL_BLOCK: 8  # 枯死的角珊瑚块
-    TUBE_CORAL_BLOCK: 8  # 管珊瑚块
-    BRAIN_CORAL_BLOCK: 8  # 脑珊瑚块
-    BUBBLE_CORAL_BLOCK: 8  # 气泡珊瑚块
-    FIRE_CORAL_BLOCK: 8  # 火珊瑚块
-    HORN_CORAL_BLOCK: 8  # 角珊瑚块
-    TUBE_CORAL: 8  # 管珊瑚
-    BRAIN_CORAL: 8  # 脑珊瑚
-    BUBBLE_CORAL: 8  # 气泡珊瑚
-    FIRE_CORAL: 8  # 火珊瑚
-    HORN_CORAL: 8  # 角珊瑚
-    DEAD_TUBE_CORAL: 8  # 枯死的管珊瑚
-    DEAD_BRAIN_CORAL: 8  # 枯死的脑珊瑚
-    DEAD_BUBBLE_CORAL: 8  # 枯死的气泡珊瑚
-    DEAD_FIRE_CORAL: 8  # 枯死的火珊瑚
-    DEAD_HORN_CORAL: 8  # 枯死的角珊瑚
-    TUBE_CORAL_FAN: 8  # 管珊瑚扇
-    BRAIN_CORAL_FAN: 8  # 脑珊瑚扇
-    BUBBLE_CORAL_FAN: 8  # 气泡珊瑚扇
-    FIRE_CORAL_FAN: 8  # 火珊瑚扇
-    HORN_CORAL_FAN: 8  # 角珊瑚扇
-    DEAD_TUBE_CORAL_FAN: 8  # 枯死的管珊瑚扇
-    DEAD_BRAIN_CORAL_FAN: 8  # 枯死的脑珊瑚扇
-    DEAD_BUBBLE_CORAL_FAN: 8  # 枯死的气泡珊瑚扇
-    DEAD_FIRE_CORAL_FAN: 8  # 枯死的火珊瑚扇
-    DEAD_HORN_CORAL_FAN: 8  # 枯死的角珊瑚扇
-    SCUTE: 32  # 鳞甲
-    APPLE: 8  # 苹果
-    DIAMOND: 2048  # 钻石
-    IRON_INGOT: 64  # 铁锭
-    GOLD_INGOT: 128  # 金锭
-    NETHERITE_SCRAP: 4096  # 下界合金碎片
-    STRING: 4  # 线
-    FEATHER: 2  # 羽毛
-    GUNPOWDER: 8  # 火药
-    WHEAT_SEEDS: 2  # 小麦种子
-    WHEAT: 2  # 小麦
-    FLINT: 1  # 燧石
-    PORKCHOP: 4  # 猪排
-    WATER_BUCKET: 128  # 水桶
-    LAVA_BUCKET: 256  # 岩浆桶
-    SADDLE: 256  # 鞍
-    REDSTONE: 16  # 红石
-    COAL: 16  # 煤炭
-    SNOWBALL: 2  # 雪球
-    MILK_BUCKET: 256  # 牛奶桶
-    CLAY_BALL: 8  # 粘土球
-    SLIME_BALL: 8  # 粘液球
-    EGG: 4  # 鸡蛋
-    GLOWSTONE_DUST: 8  # 荧石粉
-    COD: 64  # 鳕鱼
-    SALMON: 64  # 三文鱼
-    TROPICAL_FISH: 128  # 热带鱼
-    PUFFERFISH: 64  # 河豚
-    INK_SAC: 16  # 墨囊
-    COCOA_BEANS: 16  # 可可豆
-    LAPIS_LAZULI: 16  # 青金石
-    BONE: 4  # 骨头
-    MELON_SLICE: 2  # 西瓜片
-    BEEF: 4  # 生牛肉
-    CHICKEN: 4  # 生鸡肉
-    ROTTEN_FLESH: 4  # 腐肉
-    ENDER_PEARL: 8  # 末影珍珠
-    BLAZE_ROD: 8  # 烈焰棒
-    GHAST_TEAR: 16  # 恶魂之泪
-    NETHER_WART: 8  # 下界疣
-    SPIDER_EYE: 4  # 蜘蛛眼
-    EMERALD: 128  # 绿宝石
-    CARROT: 2  # 胡萝卜
-    POTATO: 2  # 马铃薯
-    POISONOUS_POTATO: 8  # 毒马铃薯
-    SKELETON_SKULL: 128  # 骷髅头颅
-    WITHER_SKELETON_SKULL: 128  # 凋零骷髅头颅
-    ZOMBIE_HEAD: 128  # 僵尸头
-    CREEPER_HEAD: 128  # 爬行者头
-    DRAGON_HEAD: 1024  # 龙首
-    NETHER_STAR: 1024  # 下界之星
-    QUARTZ: 32  # 石英
-    PRISMARINE_SHARD: 8  # 海晶碎片
-    PRISMARINE_CRYSTALS: 16  # 海晶砂粒
-    RABBIT: 2  # 生兔肉
-    RABBIT_FOOT: 16  # 兔子脚
-    RABBIT_HIDE: 2  # 兔子皮
-    NAME_TAG: 256  # 命名牌
-    MUTTON: 2  # 生羊肉
-    CHORUS_FRUIT: 4  # 紫颂果
-    BEETROOT: 2  # 甜菜根
-    BEETROOT_SEEDS: 2  # 甜菜种子
-    DRAGON_BREATH: 512  # 龙息
-    ELYTRA: 0  # 鞘翅
-    SHULKER_SHELL: 32  # 潜影壳
-    TRIDENT: 512  # 三叉戟
-    PHANTOM_MEMBRANE: 16  # 幻翼膜
-    NAUTILUS_SHELL: 128  # 鹦鹉螺壳
-    HEART_OF_THE_SEA: 8192  # 海之心
-    BELL: 128  # 钟
-    SWEET_BERRIES: 2  # 甜浆果
-    SHROOMLIGHT: 4  # 菌光体
-    HONEYCOMB: 1  # 蜜脾
-    CRYING_OBSIDIAN: 64  # 哭泣的黑曜石
-    BLACKSTONE: 2  # 黑石
-    GILDED_BLACKSTONE: 16  # 镶金黑石
-    HONEY_BOTTLE: 1  # 蜂蜜瓶
-    PLAYER_HEAD: 0  # 玩家头颅
-    RAW_IRON: 32  # 生铁
-    RAW_GOLD: 64  # 生金
-    RAW_COPPER: 16  # 生铜
-    COPPER_INGOT: 32  # 铜锭
+    # ===== 自然基础方块 =====
+    GRASS_BLOCK: 1          # 草方块
+    DIRT: 1                 # 泥土
+    PODZOL: 1               # 灰化土
+    COARSE_DIRT: 1          # 砂土
+    ROOTED_DIRT: 1          # 缠根泥土
+    CRIMSON_NYLIUM: 1       # 绯红菌岩
+    WARPED_NYLIUM: 1        # 诡异菌岩
+    MYCELIUM: 8             # 菌丝
+    FARMLAND: 1             # 耕地
+    CLAY: 32                # 粘土块 (4*粘土球)
+    SAND: 1                 # 沙子
+    RED_SAND: 1             # 红沙
+    GRAVEL: 1               # 砂砾
+    SOUL_SAND: 2            # 灵魂沙
+    SOUL_SOIL: 2            # 灵魂土
+    SNOW_BLOCK: 4           # 雪块 (4*雪球)
+    ICE: 1                  # 冰
+    PACKED_ICE: 4           # 浮冰 (9*冰)
+    BLUE_ICE: 36            # 蓝冰 (9*浮冰)
+    OBSIDIAN: 16            # 黑曜石
+    CRYING_OBSIDIAN: 64     # 哭泣的黑曜石
+
+    # ===== 石头类方块 =====
+    STONE: 1                # 石头
+    COBBLESTONE: 1          # 圆石
+    BLACKSTONE: 2           # 黑石
+    DEEPSLATE: 1            # 深板岩
+    COBBLED_DEEPSLATE: 1    # 深板圆石
+    TUFF: 1                 # 凝灰岩
+    CALCITE: 1              # 方解石
+    GRANITE: 1              # 花岗岩
+    DIORITE: 1              # 闪长岩
+    ANDESITE: 1             # 安山岩
+    DRIPSTONE_BLOCK: 1      # 滴水石块
+    NETHERRACK: 1           # 下界岩
+    BASALT: 1               # 玄武岩
+    SMOOTH_BASALT: 1        # 平滑玄武岩
+    END_STONE: 2            # 末地石
+    PRISMARINE: 24          # 海晶石 (3*海晶碎片)
+    DARK_PRISMARINE: 32     # 暗海晶石 (8*墨囊 + 海晶石)
+    MAGMA_BLOCK: 9          # 岩浆块 (4*岩浆膏)
+
+    # ===== 加工石质方块 =====
+    # 磨制变种
+    SMOOTH_STONE: 1         # 平滑石头
+    POLISHED_GRANITE: 1     # 磨制花岗岩
+    POLISHED_DIORITE: 1     # 磨制闪长岩
+    POLISHED_ANDESITE: 1    # 磨制安山岩
+    POLISHED_DEEPSLATE: 1   # 磨制深板岩
+    POLISHED_BLACKSTONE: 2  # 磨制黑石
+    # 砖类
+    STONE_BRICKS: 4         # 石砖 (4*石头)
+    DEEPSLATE_BRICKS: 1     # 深板岩砖
+    DEEPSLATE_TILES: 1      # 深板岩瓦
+    NETHER_BRICKS: 4        # 下界砖 (4*下界岩)
+    RED_NETHER_BRICKS: 4    # 红色下界砖
+    MUD_BRICKS: 4           # 泥砖
+    PRISMARINE_BRICKS: 24   # 海晶石砖
+    # 其他加工石
+    CHISELED_STONE_BRICKS: 4 # 錾制石砖
+    CRACKED_STONE_BRICKS: 4 # 裂纹石砖
+    CHISELED_DEEPSLATE: 1   # 錾制深板岩
+    CHISELED_NETHER_BRICKS: 4 # 錾制下界砖
+    CHISELED_POLISHED_BLACKSTONE: 2 # 錾制磨制黑石
+    GILDED_BLACKSTONE: 16   # 镶金黑石
+    QUARTZ_BLOCK: 32       # 石英块 (4*石英)
+    CHISELED_QUARTZ_BLOCK: 32 # 錾制石英块
+    QUARTZ_BRICKS: 32      # 石英砖
+    QUARTZ_PILLAR: 32      # 石英柱
+
+    # ===== 矿物块 =====
+    #COAL_BLOCK: 144         # 煤炭块 (9*煤炭)
+    #IRON_BLOCK: 576         # 铁块 (9*铁锭)
+    #GOLD_BLOCK: 4608        # 金块 (9*金锭)
+    #DIAMOND_BLOCK: 36864    # 钻石块 (9*钻石)
+    #EMERALD_BLOCK: 36864    # 绿宝石块 (9*绿宝石)
+    #LAPIS_BLOCK: 1296       # 青金石块 (9*青金石)
+    #REDSTONE_BLOCK: 810     # 红石块 (9*红石)
+    #COPPER_BLOCK: 324       # 铜块 (9*铜锭)
+    #RAW_IRON_BLOCK: 486     # 粗铁块 (9*粗铁)
+    #RAW_GOLD_BLOCK: 3888    # 粗金块 (9*粗金)
+    #RAW_COPPER_BLOCK: 324   # 粗铜块 (9*粗铜)
+    AMETHYST_BLOCK: 144     # 紫水晶块 (4*紫水晶碎片)
+    BUDDING_AMETHYST: 144   # 萌芽紫水晶
+
+    # ===== 原木类 =====
+    OAK_LOG: 4              # 橡树原木
+    SPRUCE_LOG: 4           # 云杉原木
+    BIRCH_LOG: 4            # 白桦原木
+    JUNGLE_LOG: 4           # 丛林原木
+    ACACIA_LOG: 4           # 金合欢原木
+    DARK_OAK_LOG: 4         # 深色橡树原木
+    MANGROVE_LOG: 4         # 红树木原木
+    CHERRY_LOG: 4           # 樱花原木
+    CRIMSON_STEM: 4         # 绯红菌柄
+    WARPED_STEM: 4          # 诡异菌柄
+    # 去皮变种
+    STRIPPED_OAK_LOG: 4
+    STRIPPED_SPRUCE_LOG: 4
+    STRIPPED_BIRCH_LOG: 4
+    STRIPPED_JUNGLE_LOG: 4
+    STRIPPED_ACACIA_LOG: 4
+    STRIPPED_DARK_OAK_LOG: 4
+    STRIPPED_MANGROVE_LOG: 4
+    STRIPPED_CHERRY_LOG: 4
+    STRIPPED_CRIMSON_STEM: 4
+    STRIPPED_WARPED_STEM: 4
+    # 木头变种
+    OAK_WOOD: 4
+    SPRUCE_WOOD: 4
+    BIRCH_WOOD: 4
+    JUNGLE_WOOD: 4
+    ACACIA_WOOD: 4
+    DARK_OAK_WOOD: 4
+    MANGROVE_WOOD: 4
+    CHERRY_WOOD: 4
+    CRIMSON_HYPHAE: 4
+    WARPED_HYPHAE: 4
+    # 去皮木头变种
+    STRIPPED_OAK_WOOD: 4
+    STRIPPED_SPRUCE_WOOD: 4
+    STRIPPED_BIRCH_WOOD: 4
+    STRIPPED_JUNGLE_WOOD: 4
+    STRIPPED_ACACIA_WOOD: 4
+    STRIPPED_DARK_OAK_WOOD: 4
+    STRIPPED_MANGROVE_WOOD: 4
+    STRIPPED_CHERRY_WOOD: 4
+    STRIPPED_CRIMSON_HYPHAE: 4
+    STRIPPED_WARPED_HYPHAE: 4
+
+    # ===== 木板类 =====
+    OAK_PLANKS: 1           # 橡木木板 (1/4原木)
+    SPRUCE_PLANKS: 1        # 云杉木板
+    BIRCH_PLANKS: 1         # 白桦木板
+    JUNGLE_PLANKS: 1        # 丛林木板
+    ACACIA_PLANKS: 1        # 金合欢木板
+    DARK_OAK_PLANKS: 1      # 深色橡木木板
+    MANGROVE_PLANKS: 1      # 红树木板
+    CHERRY_PLANKS: 1        # 樱花木板
+    CRIMSON_PLANKS: 1       # 绯红木板
+    WARPED_PLANKS: 1        # 诡异木板
+    BAMBOO_PLANKS: 1        # 竹木板
+    BAMBOO_MOSAIC: 1        # 竹马赛克
+
+    # ===== 树叶类 =====
+    OAK_LEAVES: 1           # 橡树树叶
+    SPRUCE_LEAVES: 1        # 云杉树叶
+    BIRCH_LEAVES: 1         # 白桦树叶
+    JUNGLE_LEAVES: 1        # 丛林树叶
+    ACACIA_LEAVES: 1        # 金合欢树叶
+    DARK_OAK_LEAVES: 1      # 深色橡树树叶
+    MANGROVE_LEAVES: 1      # 红树树叶
+    CHERRY_LEAVES: 1        # 樱花树叶
+    AZALEA_LEAVES: 1        # 杜鹃树叶
+    FLOWERING_AZALEA_LEAVES: 1 # 开花杜鹃树叶
+    NETHER_WART_BLOCK: 8    # 下界疣块 (9*下界疣/9)
+
+    # ===== 植物类 =====
+    # 小型植物
+    GRASS: 1                # 草
+    FERN: 1                 # 蕨
+    DEAD_BUSH: 1            # 枯灌木
+    SEAGRASS: 1             # 海草
+    TALL_GRASS: 1           # 高草
+    LARGE_FERN: 1           # 大蕨
+    DANDELION: 4            # 蒲公英
+    POPPY: 4                # 虞美人
+    BLUE_ORCHID: 4          # 兰花
+    ALLIUM: 4               # 绒球葱
+    AZURE_BLUET: 4          # 蓝花美耳草
+    RED_TULIP: 4            # 红色郁金香
+    ORANGE_TULIP: 4         # 橙色郁金香
+    WHITE_TULIP: 4          # 白色郁金香
+    PINK_TULIP: 4           # 粉色郁金香
+    OXEYE_DAISY: 4          # 滨菊
+    CORNFLOWER: 4           # 矢车菊
+    LILY_OF_THE_VALLEY: 4   # 铃兰
+    WITHER_ROSE: 8          # 凋零玫瑰
+    SUNFLOWER: 4            # 向日葵
+    LILAC: 4                # 丁香
+    ROSE_BUSH: 4            # 玫瑰丛
+    PEONY: 4                # 牡丹
+    # 特殊植物
+    BROWN_MUSHROOM: 4       # 棕色蘑菇
+    RED_MUSHROOM: 4         # 红色蘑菇
+    CRIMSON_FUNGUS: 4       # 绯红真菌
+    WARPED_FUNGUS: 4        # 诡异真菌
+    CRIMSON_ROOTS: 2        # 绯红菌根
+    WARPED_ROOTS: 2         # 诡异菌根
+    WEEPING_VINES: 2        # 垂泪藤
+    TWISTING_VINES: 2       # 缠怨藤
+    SUGAR_CANE: 2           # 甘蔗
+    KELP: 1                 # 海带
+    BAMBOO: 1               # 竹子
+    CACTUS: 1               # 仙人掌
+    VINE: 2                 # 藤蔓
+    GLOW_LICHEN: 4          # 发光地衣
+    MOSS_CARPET: 1          # 苔藓地毯 (1/2苔藓块)
+    SPORE_BLOSSOM: 8        # 孢子花
+    HANGING_ROOTS: 1        # 垂根
+    BIG_DRIPLEAF: 4         # 大型垂滴叶
+    SMALL_DRIPLEAF: 2       # 小型垂滴叶
+    # 水生植物
+    LILY_PAD: 8             # 睡莲
+    SEA_PICKLE: 4           # 海泡菜
+    TUBE_CORAL: 8           # 管珊瑚
+    BRAIN_CORAL: 8          # 脑珊瑚
+    BUBBLE_CORAL: 8         # 气泡珊瑚
+    FIRE_CORAL: 8           # 火珊瑚
+    HORN_CORAL: 8           # 角珊瑚
+    # 枯死珊瑚
+    DEAD_TUBE_CORAL: 8
+    DEAD_BRAIN_CORAL: 8
+    DEAD_BUBBLE_CORAL: 8
+    DEAD_FIRE_CORAL: 8
+    DEAD_HORN_CORAL: 8
+    # 珊瑚块
+    TUBE_CORAL_BLOCK: 8
+    BRAIN_CORAL_BLOCK: 8
+    BUBBLE_CORAL_BLOCK: 8
+    FIRE_CORAL_BLOCK: 8
+    HORN_CORAL_BLOCK: 8
+    DEAD_TUBE_CORAL_BLOCK: 8
+    DEAD_BRAIN_CORAL_BLOCK: 8
+    DEAD_BUBBLE_CORAL_BLOCK: 8
+    DEAD_FIRE_CORAL_BLOCK: 8
+    DEAD_HORN_CORAL_BLOCK: 8
+    # 珊瑚扇
+    TUBE_CORAL_FAN: 8
+    BRAIN_CORAL_FAN: 8
+    BUBBLE_CORAL_FAN: 8
+    FIRE_CORAL_FAN: 8
+    HORN_CORAL_FAN: 8
+    DEAD_TUBE_CORAL_FAN: 8
+    DEAD_BRAIN_CORAL_FAN: 8
+    DEAD_BUBBLE_CORAL_FAN: 8
+    DEAD_FIRE_CORAL_FAN: 8
+    DEAD_HORN_CORAL_FAN: 8
+
+    # ===== 农作物 =====
+    #PUMPKIN: 4              # 南瓜
+    #CARVED_PUMPKIN: 4       # 雕刻南瓜
+    #MELON: 18               # 西瓜 (9*西瓜片)
+    #HAY_BLOCK: 18           # 干草块 (9*小麦)
+    #MUSHROOM_STEM: 4        # 蘑菇柄
+    #BROWN_MUSHROOM_BLOCK: 4 # 棕色蘑菇块
+    #RED_MUSHROOM_BLOCK: 4   # 红色蘑菇块
+    #WHEAT: 0                # 小麦 (未成熟无价值)
+    #BEETROOTS: 0            # 甜菜根 (未成熟)
+    #CARROTS: 0              # 胡萝卜 (未成熟)
+    #POTATOES: 0             # 马铃薯 (未成熟)
+    #NETHER_WART: 8          # 下界疣
+    #COCOA: 16               # 可可果 (成熟)
+    #SWEET_BERRY_BUSH: 2     # 甜浆果丛
+
+    # ===== 功能方块 =====
+    #CRAFTING_TABLE: 4        # 工作台 (4*木板)
+    #FURNACE: 8              # 熔炉 (8*圆石)
+    #BLAST_FURNACE: 256      # 高炉 (5*铁锭+熔炉)
+    #SMOKER: 256             # 烟熏炉 (4*原木+熔炉)
+    #LOOM: 8                 # 织布机 (2*线+2*木板)
+    #CARTOGRAPHY_TABLE: 8    # 制图台 (4*木板+2纸)
+    #FLETCHING_TABLE: 8      # 制箭台 (4*木板+2燧石)
+    #SMITHING_TABLE: 16      # 锻造台 (4*木板+2铁锭)
+    #STONECUTTER: 8          # 切石机 (3石头+铁锭)
+    #GRINDSTONE: 8           # 砂轮 (2*木板+2*木棍+石台阶)
+    #LECTERN: 16             # 讲台 (4*木板+书架)
+    #COMPOSTER: 8            # 堆肥桶 (7*木板)
+    #BARREL: 8               # 木桶 (7*木板+2木棍)
+    #CHEST: 8                # 箱子 (8*木板)
+    #TRAPPED_CHEST: 16       # 陷阱箱 (箱子+绊线钩)
+    #ENDER_CHEST: 1024       # 末影箱 (8*黑曜石+末影之眼)
+    #ANVIL: 5824             # 铁砧 (31*铁锭)
+    #ENCHANTING_TABLE: 1024  # 附魔台 (4*黑曜石+2钻石+书)
+    #JUKEBOX: 288            # 唱片机 (8*木板+钻石)
+    #BEACON: 36864           # 信标 (3*黑曜石+5玻璃+下界之星)
+    #CONDUIT: 1024           # 潮涌核心 (8*鹦鹉螺壳+海洋之心)
+    #RESPAWN_ANCHOR: 2304    # 重生锚 (6*哭泣的黑曜石+3萤石)
+
+    # ===== 光源方块 =====
+    #TORCH: 1                # 火把 (1/4煤炭或木炭+木棍)
+    #SOUL_TORCH: 3           # 灵魂火把 (木炭+灵魂土)
+    #LANTERN: 18             # 灯笼 (8*铁粒+火把)
+    #SOUL_LANTERN: 20        # 灵魂灯笼 (8*铁粒+灵魂火把)
+    GLOWSTONE: 32           # 荧石 (4*荧石粉)
+    SEA_LANTERN: 40         # 海晶灯 (4*海晶砂粒+5海晶碎片)
+    SHROOMLIGHT: 4          # 菌光体
+    OCHRE_FROGLIGHT: 64     # 赭黄蛙明灯
+    VERDANT_FROGLIGHT: 64   # 翠绿蛙明灯
+    PEARLESCENT_FROGLIGHT: 64 # 珠紫蛙明灯
+    #CANDLE: 4               # 蜡烛 (1*线+1蜂蜜)
+    GLOW_BERRIES: 2         # 发光浆果
+
+    # ===== 玻璃类 =====
+    GLASS: 1                # 玻璃 (沙子烧制)
+    TINTED_GLASS: 9         # 遮光玻璃 (1玻璃+4紫水晶碎片)
+    GLASS_PANE: 3           # 玻璃板 (6*玻璃 -> 16块)
+    WHITE_STAINED_GLASS: 9  # 染色玻璃 (8玻璃+染料)
+    # 其他染色玻璃省略，EMC同白色
+
+    # ===== 陶瓦类 =====
+    TERRACOTTA: 8           # 陶瓦 (粘土块烧制)
+    WHITE_TERRACOTTA: 8
+    # 其他染色陶瓦省略，EMC相同
+    GLAZED_TERRACOTTA: 8    # 带釉陶瓦 (陶瓦烧制)
+
+    # ===== 混凝土类 =====
+    CONCRETE: 9             # 混凝土 (4沙子+4沙砾+染料)
+    CONCRETE_POWDER: 9      # 混凝土粉末
+
+    # ===== 建筑装饰 =====
+    #BOOKSHELF: 18           # 书架 (6*木板+3书)
+    LADDER: 3               # 梯子 (7*木棍)
+    SCAFFOLDING: 1          # 脚手架 (6*竹子+线)
+    CHAIN: 12               # 锁链 (2*铁锭+铁粒)
+    IRON_BARS: 12           # 铁栏杆 (6*铁锭)
+    #PAINTING: 8             # 画 (8*木棍+羊毛)
+    #ITEM_FRAME: 8           # 物品展示框 (8*木棍+皮革)
+    #GLOW_ITEM_FRAME: 10     # 发光物品展示框
+    ARMOR_STAND: 16         # 盔甲架 (6*木棍+石台阶)
+    #END_ROD: 8              # 末地烛 (1*爆裂紫颂果+1烈焰棒)
+    BELL: 128               # 钟 (4*金锭+木棍)
+
+    # ===== 特殊方块 =====
+    #SPAWNER: 2048           # 刷怪笼 (无法合成，高价值)
+    #DRAGON_EGG: 8192        # 龙蛋 (唯一物品)
+    #LODESTONE: 1024         # 磁石 (8*石砖+下界合金锭)
+    AMETHYST_CLUSTER: 144   # 紫水晶簇 (4*紫水晶块)
+    POINTED_DRIPSTONE: 1    # 滴水石锥
+    #SCULK_SENSOR: 8         # 幽匿感测体
+    #SCULK_CATALYST: 8       # 幽匿催发体
+    #SCULK_SHRIEKER: 8       # 幽匿尖啸体
+    REINFORCED_DEEPSLATE: 1024 # 强化深板岩
